@@ -21,12 +21,18 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Gathering Storm Demo Mod</AssemblyName>
     <RootNamespace>Gathering Storm Demo Mod</RootNamespace>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Gathering_Storm_Demo_Mod.Art.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Demo_Building.xml">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
 </Project>

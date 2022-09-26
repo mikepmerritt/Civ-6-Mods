@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+	<Types>
+		<Row Type="BUILDING_DEMO_HOUSE" Kind="KIND_BUILDING" />
+	</Types>
+	<Buildings>
+		<Row BuildingType="BUILDING_DEMO_HOUSE" Name="LOC_BUILDING_DEMO_HOUSE_NAME" PrereqTech="TECH_ANIMAL_HUSBANDRY" Cost="40" Housing="3" Entertainment="1" PurchaseYield="YIELD_GOLD" PrereqDistrict="DISTRICT_CITY_CENTER" AdvisorType="ADVISOR_GENERIC" />
+	</Buildings>
+</GameData>
