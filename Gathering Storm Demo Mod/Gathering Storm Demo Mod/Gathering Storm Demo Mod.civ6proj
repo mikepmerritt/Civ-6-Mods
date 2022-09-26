@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Gathering Storm Demo Mod</AssemblyName>
     <RootNamespace>Gathering Storm Demo Mod</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddBuildingText"><File>Demo_Building_Text.xml</File></UpdateText></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -31,6 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Demo_Building.xml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Demo_Building_Text.xml">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
