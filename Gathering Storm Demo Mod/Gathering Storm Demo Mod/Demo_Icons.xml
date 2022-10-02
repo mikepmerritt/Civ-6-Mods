@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<IconDefinitions>
+		<Row>
+			<Name>ICON_BUILDING_DEMO_HOUSE_SAM</Name>
+			<Atlas>ICON_ATLAS_BUILDINGS</Atlas>
+			<Index>2</Index>
+		</Row>
+		<Row>
+			<Name>ICON_BUILDING_DEMO_HOUSE_SAM_FOW</Name>
+			<Atlas>ICON_ATLAS_BUILDINGS_FOW</Atlas>
+			<Index>2</Index>
+		</Row>
+		
+		<Row>
+			<Name>ICON_UNIT_CARTOGRAPHER_SAM</Name>
+			<Atlas>ICON_ATLAS_UNITS</Atlas>
+			<Index>18</Index>
+		</Row>
+		<Row>
+			<Name>ICON_UNIT_CARTOGRAPHER_SAM_FOW</Name>
+			<Atlas>ICON_ATLAS_UNITS_FOW</Atlas>
+			<Index>18</Index>
+		</Row>
+		<Row>
+			<Name>ICON_UNIT_CARTOGRAPHER_PORTRAIT_SAM</Name>
+			<Atlas>ICON_ATLAS_UNIT_PORTRAITS</Atlas>
+			<Index>17</Index>
+		</Row>
+		<Row>
+			<Name>ICON_ETHNICITY_ASIAN_UNIT_CARTOGRAPHER_PORTRAIT_SAM</Name>
+			<Atlas>ICON_ATLAS_ASIAN_UNIT_PORTRAITS</Atlas>
+			<Index>17</Index>
+		</Row>
+		<Row>
+			<Name>ICON_ETHNICITY_MEDIT_UNIT_CARTOGRAPHER_PORTRAIT_SAM</Name>
+			<Atlas>ICON_ATLAS_MEDITERRANEAN_UNIT_PORTRAITS</Atlas>
+			<Index>17</Index>
+		</Row>
+		<Row>
+			<Name>ICON_ETHNICITY_SOUTHAM_UNIT_CARTOGRAPHER_PORTRAIT_SAM</Name>
+			<Atlas>ICON_ATLAS_SOUTH_AMERICAN_UNIT_PORTRAITS</Atlas>
+			<Index>17</Index>
+		</Row>
+		<Row>
+			<Name>ICON_ETHNICITY_AFRICAN_UNIT_CARTOGRAPHER_PORTRAIT_SAM</Name>
+			<Atlas>ICON_ATLAS_AFRICAN_UNIT_PORTRAITS</Atlas>
+			<Index>17</Index>
+		</Row>
+	</IconDefinitions>
+</GameData>
