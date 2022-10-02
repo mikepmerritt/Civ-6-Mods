@@ -22,7 +22,7 @@
     <AssemblyName>Gathering Storm Demo Mod</AssemblyName>
     <RootNamespace>Gathering Storm Demo Mod</RootNamespace>
     <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddText"><File>Demo_Text.xml</File></UpdateText><UpdateIcons id="AddIcons"><File>Demo_Icons.xml</File></UpdateIcons><UpdateDatabase id="AddUnit"><File>Cartographer_Unit.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
-    <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="DemoLeaderConfig"><File>FrontEnd/Demo_Leader_Config.xml</File></UpdateDatabase><UpdateText id="DemoLeaderTextConfig"><File>FrontEnd/Demo_Leader_Config_Text.xml</File></UpdateText></FrontEndActions>]]></FrontEndActionData>
+    <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="DemoLeaderConfig"><File>FrontEnd/Demo_Leader_Config.xml</File></UpdateDatabase><UpdateText id="DemoLeaderTextConfig"><File>FrontEnd/Demo_Leader_Config_Text.xml</File></UpdateText><UpdateIcons id="DemoLeaderIconConfig"><File>FrontEnd/Demo_Leader_Config_Icons.xml</File></UpdateIcons></FrontEndActions>]]></FrontEndActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -44,6 +44,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="FrontEnd\Demo_Leader_Config.xml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="FrontEnd\Demo_Leader_Config_Icons.xml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="FrontEnd\Demo_Leader_Config_Text.xml">
