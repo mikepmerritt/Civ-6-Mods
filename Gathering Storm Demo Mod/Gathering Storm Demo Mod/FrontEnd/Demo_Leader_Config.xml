@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<Players>
+		<Row>
+			<Domain>StandardPlayers</Domain>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+			<CivilizationName>LOC_CIVILATION_DEMO_SAM_NAME</CivilizationName>
+			<CivilizationIcon>ICON_CIVILIZATION_DEMO_SAM</CivilizationIcon>
+			<LeaderName>LOC_LEADER_DEMO_LEADER_SAM_NAME</LeaderName>
+			<LeaderIcon>ICON_LEADER_DEMO_LEADER_SAM</LeaderIcon>
+			<CivilizationAbilityName>LOC_TRAIT_CIVILIZATION_DEMO_SAM_NAME</CivilizationAbilityName>
+			<CivilizationAbilityDescription>LOC_TRAIT_CIVILIZATION_DEMO_SAM_DESCRIPTION</CivilizationAbilityDescription>
+			<CivilizationAbilityIcon>ICON_CIVILIZATION_DEMO_SAM</CivilizationAbilityIcon>
+			<LeaderAbilityName>LOC_TRAIT_LEADER_DEMO_LEADER_SAM_NAME</LeaderAbilityName>
+			<LeaderAbilityDescription>LOC_TRAIT_LEADER_DEMO_LEADER_SAM_DESCRIPTION</LeaderAbilityDescription>
+			<LeaderAbilityIcon>ICON_LEADER_DEMO_LEADER_SAM</LeaderAbilityIcon>
+			<Portrait>LEADER_DEMO_LEADER_SAM_NEUTRAL</Portrait>
+		</Row>
+	</Players>
+	<PlayerItems>
+		<Row>
+			<Domain>StandardPlayers</Domain>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+		</Row>
+	</PlayerItems>
+</GameData>
