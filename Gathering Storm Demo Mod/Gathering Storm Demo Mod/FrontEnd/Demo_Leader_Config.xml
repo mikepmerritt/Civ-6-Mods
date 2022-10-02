@@ -19,11 +19,12 @@
 			<Portrait>LEADER_DEMO_LEADER_SAM_NEUTRAL</Portrait>
 		</Row>
 	</Players>
+	<!-- Needed later when introducing unique buildings/units
 	<PlayerItems>
 		<Row>
 			<Domain>StandardPlayers</Domain>
 			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
 			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
 		</Row>
-	</PlayerItems>
+	</PlayerItems> !-->
 </GameData>
