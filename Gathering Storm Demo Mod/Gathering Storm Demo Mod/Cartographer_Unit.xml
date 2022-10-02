@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+	<Types>
+		<Row>
+			<Type>UNIT_CARTOGRAPHER_SAM</Type>
+			<Kind>KIND_UNIT</Kind>
+		</Row>
+	</Types>
+	<Units>
+		<Row>
+			<UnitType>UNIT_CARTOGRAPHER_SAM</UnitType>
+			<Cost>50</Cost>
+			<BaseMoves>2</BaseMoves>
+			<BaseSightRange>5</BaseSightRange>
+			<ZoneOfControl>false</ZoneOfControl>
+			<Domain>DOMAIN_LAND</Domain>
+			<Combat>5</Combat>
+			<FormationClass>FORMATION_CLASS_LAND_COMBAT</FormationClass>
+			<PromotionClass>PROMOTION_CLASS_RECON</PromotionClass>
+			<AdvisorType>ADVISOR_GENERIC</AdvisorType>
+			<Name>LOC_UNIT_CARTOGRAPHER_SAM_NAME</Name>
+			<Description>LOC_UNIT_CARTOGRAPHER_SAM_DESCRIPTION</Description>
+			<PurchaseYield>YIELD_GOLD</PurchaseYield>
+		</Row>
+	</Units>
+</GameData>

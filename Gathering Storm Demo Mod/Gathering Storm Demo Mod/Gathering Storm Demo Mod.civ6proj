@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Gathering Storm Demo Mod</AssemblyName>
     <RootNamespace>Gathering Storm Demo Mod</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddBuildingText"><File>Demo_Building_Text.xml</File></UpdateText><UpdateIcons id="AddBuildingIcons"><File>Demo_Building_Icons.xml</File></UpdateIcons></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddBuildingText"><File>Demo_Text.xml</File></UpdateText><UpdateIcons id="AddBuildingIcons"><File>Demo_Building_Icons.xml</File></UpdateIcons><UpdateDatabase id="AddUnit"><File>Cartographer_Unit.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -30,13 +30,16 @@
     <None Include="Gathering_Storm_Demo_Mod.Art.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cartographer_Unit.xml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Demo_Building.xml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Demo_Building_Icons.xml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Demo_Building_Text.xml">
+    <Content Include="Demo_Text.xml">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
