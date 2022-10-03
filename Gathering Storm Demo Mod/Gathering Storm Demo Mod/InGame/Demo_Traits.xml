@@ -25,4 +25,60 @@
 			<Description>LOC_TRAIT_LEADER_DEMO_LEADER_SAM_DESCRIPTION</Description>
 		</Row>
 	</Traits>
+
+	<!-- LEADER TRAIT MODIFIER -->
+	<TraitModifiers>
+		<Row>
+			<TraitType>TRAIT_LEADER_DEMO_SAM</TraitType>
+			<ModifierId>TRAIT_DEMO_LEADER_SAM_DIPLOMATIC_GOVERNMENT_SLOT</ModifierId>
+		</Row>
+	</TraitModifiers>
+
+	<Modifiers>
+		<Row>
+			<ModifierId>TRAIT_DEMO_LEADER_SAM_DIPLOMATIC_GOVERNMENT_SLOT</ModifierId>
+			<ModifierType>MODIFIER_PLAYER_CULTURE_ADJUST_GOVERNMENT_SLOTS_MODIFIER</ModifierType>
+		</Row>
+	</Modifiers>
+
+	<ModifierArguments>
+		<Row>
+			<ModifierId>TRAIT_DEMO_LEADER_SAM_DIPLOMATIC_GOVERNMENT_SLOT</ModifierId>
+			<Name>GovernmentSlotType</Name>
+			<Value>SLOT_DIPLOMATIC</Value>
+		</Row>
+	</ModifierArguments>
+	
+	<!-- CIVILIZATION TRAIT -->
+	<TraitModifiers>
+		<Row>
+			<TraitType>TRAIT_CIVILIZATION_DEMO_SAM</TraitType>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+		</Row>
+	</TraitModifiers>
+
+	<Modifiers>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<ModifierType>MODIFIER_PLAYER_CITIES_ADJUST_BUILDING_YIELD_CHANGE</ModifierType>
+		</Row>
+	</Modifiers>
+
+	<ModifierArguments>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<Name>BuildingType</Name>
+			<Value>BUILDING_MONUMENT</Value>
+		</Row>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<Name>YieldType</Name>
+			<Value>YIELD_PRODUCTION</Value>
+		</Row>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<Name>Amount</Name>
+			<Value>1</Value>
+		</Row>
+	</ModifierArguments>
 </GameData>

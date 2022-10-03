@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<Types>
+		<Row>
+			<Type>POLICY_MONUMENTALITY_SAM</Type>
+			<Kind>KIND_POLICY</Kind>
+		</Row>
+	</Types>
+
+	<Policies>
+		<Row>
+			<PolicyType>POLICY_MONUMENTALITY_SAM</PolicyType>
+			<Description>LOC_POLICY_MONUMENTALITY_SAM_DESCRIPTION</Description>
+			<PrereqCivic>CIVIC_CODE_OF_LAWS</PrereqCivic>
+			<Name>LOC_POLICY_MONUMENTALITY_SAM_NAME</Name>
+			<GovernmentSlotType>SLOT_DIPLOMATIC</GovernmentSlotType>
+		</Row>
+	</Policies>
+
+	<PolicyModifiers>
+		<Row>
+			<PolicyType>POLICY_MONUMENTALITY_SAM</PolicyType>
+			<ModifierId>MONUMENTALITY_SAM_LOYALTY</ModifierId>
+		</Row>
+	</PolicyModifiers>
+
+	<Modifiers>
+		<Row>
+			<ModifierId>MONUMENTALITY_SAM_LOYALTY</ModifierId>
+			<ModifierType>MODIFIER_PLAYER_CITIES_ADJUST_IDENTITY_PER_TURN</ModifierType>
+		</Row>
+	</Modifiers>
+
+	<ModifierArguments>
+		<Row>
+			<ModifierId>MONUMENTALITY_SAM_LOYALTY</ModifierId>
+			<Name>Amount</Name>
+			<Value>1</Value>
+		</Row>
+	</ModifierArguments>
+</GameData>
