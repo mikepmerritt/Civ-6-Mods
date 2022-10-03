@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<Leaders>
+		<Row>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+			<Name>LOC_LEADER_DEMO_LEADER_SAM_NAME</Name>
+			<InheritFrom></InheritFrom>
+			<Sex>Male</Sex>
+		</Row>
+	</Leaders>
+
+	<LeaderQuotes>
+		<Row>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+			<Quote>LOC_LEADER_DEMO_LEADER_SAM_QUOTE</Quote>
+		</Row>
+	</LeaderQuotes>
+
+	<LeaderTraits>
+		<Row>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+			<TraitType>TRAIT_LEADER_DEMO_SAM</TraitType>
+		</Row>
+	</LeaderTraits>
+</GameData>

@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Gathering Storm Demo Mod</AssemblyName>
     <RootNamespace>Gathering Storm Demo Mod</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddText"><File>Demo_Text.xml</File></UpdateText><UpdateIcons id="AddIcons"><File>Demo_Icons.xml</File></UpdateIcons><UpdateDatabase id="AddUnit"><File>Cartographer_Unit.xml</File></UpdateDatabase><UpdateDatabase id="AddCivilization"><File>InGame/Demo_Civilization.xml</File><File>InGame/Demo_Traits.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddText"><File>Demo_Text.xml</File></UpdateText><UpdateIcons id="AddIcons"><File>Demo_Icons.xml</File></UpdateIcons><UpdateDatabase id="AddUnit"><File>Cartographer_Unit.xml</File></UpdateDatabase><UpdateDatabase id="AddCivilization"><File>InGame/Demo_Civilization.xml</File><File>InGame/Demo_Traits.xml</File><File>InGame/Demo_Leader.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
     <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="DemoLeaderConfig"><File>FrontEnd/Demo_Leader_Config.xml</File></UpdateDatabase><UpdateText id="DemoLeaderTextConfig"><File>FrontEnd/Demo_Leader_Config_Text.xml</File></UpdateText><UpdateIcons id="DemoLeaderIconConfig"><File>FrontEnd/Demo_Leader_Config_Icons.xml</File></UpdateIcons></FrontEndActions>]]></FrontEndActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
@@ -53,6 +53,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="InGame\Demo_Civilization.xml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="InGame\Demo_Leader.xml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="InGame\Demo_Traits.xml">

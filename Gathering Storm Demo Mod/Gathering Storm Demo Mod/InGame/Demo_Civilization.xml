@@ -84,4 +84,43 @@
 			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_10</CityName>
 		</Row>
 	</CityNames>
+
+	<CivilizationCitizenNames>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CitizenName>LOC_CITIZEN_DEMO_MALE_1</CitizenName>
+			<Female>0</Female>
+			<Modern>0</Modern>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CitizenName>LOC_CITIZEN_DEMO_MALE_2</CitizenName>
+			<Female>0</Female>
+			<Modern>0</Modern>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CitizenName>LOC_CITIZEN_DEMO_MALE_3</CitizenName>
+			<Female>0</Female>
+			<Modern>0</Modern>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CitizenName>LOC_CITIZEN_DEMO_FEMALE_1</CitizenName>
+			<Female>1</Female>
+			<Modern>0</Modern>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CitizenName>LOC_CITIZEN_DEMO_FEMALE_2</CitizenName>
+			<Female>1</Female>
+			<Modern>0</Modern>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CitizenName>LOC_CITIZEN_DEMO_FEMALE_3</CitizenName>
+			<Female>1</Female>
+			<Modern>0</Modern>
+		</Row>
+	</CivilizationCitizenNames>
 </GameData>
