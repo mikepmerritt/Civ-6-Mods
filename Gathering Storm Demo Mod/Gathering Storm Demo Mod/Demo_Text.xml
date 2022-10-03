@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GameData>
 	<LocalizedText>
+		<!-- DEMO HOUSE BUILDING TEXT -->
 		<Row>
 			<Tag>LOC_BUILDING_DEMO_HOUSE_SAM_NAME</Tag>
 			<Language>en_US</Language>
@@ -11,6 +12,7 @@
 			<Language>en_US</Language>
 			<Text>A demo house which makes life easier.</Text>
 		</Row>
+		<!-- CARTOGRAPHER UNIT TEXT -->
 		<Row>
 			<Tag>LOC_UNIT_CARTOGRAPHER_SAM_NAME</Tag>
 			<Language>en_US</Language>
@@ -20,6 +22,17 @@
 			<Tag>LOC_UNIT_CARTOGRAPHER_SAM_DESCRIPTION</Tag>
 			<Language>en_US</Language>
 			<Text>The Cartographer is great for surveying the land around the map. He is fast and can see far, but is very weak in combat and exerts no zone of control.</Text>
+		</Row>
+		<!-- CARTOGRAPHER UNIT TEXT -->
+		<Row>
+			<Tag>LOC_POLICY_MONUMENTALITY_SAM_DESCRIPTION</Tag>
+			<Language>en_US</Language>
+			<Text>Gain +1 Loyalty per turn in each city in your empire.</Text>
+		</Row>
+		<Row>
+			<Tag>LOC_POLICY_MONUMENTALITY_SAM_NAME</Tag>
+			<Language>en_US</Language>
+			<Text>Monumentality</Text>
 		</Row>
 	</LocalizedText>
 </GameData>
