@@ -48,4 +48,37 @@
 			<Value>SLOT_DIPLOMATIC</Value>
 		</Row>
 	</ModifierArguments>
+	
+	<!-- CIVILIZATION TRAIT -->
+	<TraitModifiers>
+		<Row>
+			<TraitType>TRAIT_CIVILIZATION_DEMO_SAM</TraitType>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+		</Row>
+	</TraitModifiers>
+
+	<Modifiers>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<ModifierType>MODIFIER_PLAYER_CITIES_ADJUST_BUILDING_YIELD_CHANGE</ModifierType>
+		</Row>
+	</Modifiers>
+
+	<ModifierArguments>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<Name>BuildingType</Name>
+			<Value>BUILDING_MONUMENT</Value>
+		</Row>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<Name>YieldType</Name>
+			<Value>YIELD_PRODUCTION</Value>
+		</Row>
+		<Row>
+			<ModifierId>TRAIT_DEMO_CIVILIZATION_SAM_MONUMENT_YEILD</ModifierId>
+			<Name>Amount</Name>
+			<Value>1</Value>
+		</Row>
+	</ModifierArguments>
 </GameData>
