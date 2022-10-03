@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<LoadingInfo>
+		<Row>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+			<BackgroundImage>LEADER_HOJO_BACKGROUND</BackgroundImage>
+			<ForegroundImage>LEADER_DEMO_LEADER_SAM_NEUTRAL</ForegroundImage>
+			<PlayDawnOfManAudio>0</PlayDawnOfManAudio>
+		</Row>
+	</LoadingInfo>
+</GameData>

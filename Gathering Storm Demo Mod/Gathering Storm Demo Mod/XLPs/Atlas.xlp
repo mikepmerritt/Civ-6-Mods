@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AssetObjects..XLP>
+	<m_Version>
+		<major>1</major>
+		<minor>0</minor>
+		<build>0</build>
+		<revision>0</revision>
+	</m_Version>
+	<m_ClassName text="UITexture"/>
+	<m_PackageName text="UI/Icons"/>
+	<m_Entries>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_256"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_256"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_32"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_32"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_45"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_45"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_50"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_50"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_55"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_55"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_64"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_64"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_LEADER_DEMO_LEADER_SAM_80"/>
+			<m_ObjectName text="ICON_LEADER_DEMO_LEADER_SAM_80"/>
+		</Element>
+	</m_Entries>
+	<m_AllowedPlatforms>
+		<Element>WINDOWS</Element>
+		<Element>MACOS</Element>
+		<Element>IOS</Element>
+		<Element>LINUX</Element>
+		<Element>XBONE</Element>
+		<Element>PS4</Element>
+		<Element>SWITCH</Element>
+		<Element>STADIA</Element>
+	</m_AllowedPlatforms>
+</AssetObjects..XLP>
+

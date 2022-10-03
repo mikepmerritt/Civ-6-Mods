@@ -21,16 +21,22 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Gathering Storm Demo Mod</AssemblyName>
     <RootNamespace>Gathering Storm Demo Mod</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddText"><File>Demo_Text.xml</File></UpdateText><UpdateIcons id="AddIcons"><File>Demo_Icons.xml</File></UpdateIcons><UpdateDatabase id="AddUnit"><File>Cartographer_Unit.xml</File></UpdateDatabase><UpdateDatabase id="AddCivilization"><File>InGame/Demo_Civilization.xml</File><File>InGame/Demo_Traits.xml</File><File>InGame/Demo_Leader.xml</File></UpdateDatabase><UpdateText id="AddCivilizationText"><File>FrontEnd/Demo_Leader_Config_Text.xml</File><File>InGame/Demo_Civilization_InGame_Text.xml</File></UpdateText><AddGameplayScripts id="AddDemoScript"><File>Demo_Script.lua</File></AddGameplayScripts><UpdateDatabase id="AddPolicy"><File>Loyalty_Policy.xml</File></UpdateDatabase></InGameActions>]]></InGameActionData>
-    <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="DemoLeaderConfig"><File>FrontEnd/Demo_Leader_Config.xml</File></UpdateDatabase><UpdateText id="DemoLeaderTextConfig"><File>FrontEnd/Demo_Leader_Config_Text.xml</File></UpdateText><UpdateIcons id="DemoLeaderIconConfig"><File>FrontEnd/Demo_Leader_Config_Icons.xml</File></UpdateIcons></FrontEndActions>]]></FrontEndActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddBuilding"><File>Demo_Building.xml</File></UpdateDatabase><UpdateText id="AddText"><File>Demo_Text.xml</File></UpdateText><UpdateIcons id="AddIcons"><File>Demo_Icons.xml</File></UpdateIcons><UpdateDatabase id="AddUnit"><File>Cartographer_Unit.xml</File></UpdateDatabase><UpdateDatabase id="AddCivilization"><File>InGame/Demo_Civilization.xml</File><File>InGame/Demo_Traits.xml</File><File>InGame/Demo_Leader.xml</File></UpdateDatabase><UpdateText id="AddCivilizationText"><File>FrontEnd/Demo_Leader_Config_Text.xml</File><File>InGame/Demo_Civilization_InGame_Text.xml</File></UpdateText><AddGameplayScripts id="AddDemoScript"><File>Demo_Script.lua</File></AddGameplayScripts><UpdateDatabase id="AddPolicy"><File>Loyalty_Policy.xml</File></UpdateDatabase><UpdateIcons id="LeaderIcons"><File>Icons/Icons.xml</File></UpdateIcons><UpdateArt id="LeaderArt"><File>(Mod Art Dependency File)</File></UpdateArt></InGameActions>]]></InGameActionData>
+    <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="DemoLeaderConfig"><File>FrontEnd/Demo_Leader_Config.xml</File></UpdateDatabase><UpdateText id="DemoLeaderTextConfig"><File>FrontEnd/Demo_Leader_Config_Text.xml</File></UpdateText><UpdateIcons id="DemoLeaderIconConfig"><File>FrontEnd/Demo_Leader_Config_Icons.xml</File></UpdateIcons><UpdateIcons id="LeaderIcons"><File>Icons/Icons.xml</File></UpdateIcons><UpdateArt id="LeaderArt"><File>(Mod Art Dependency File)</File></UpdateArt><UpdateDatabase id="LeaderArtConfig"><File>Leader_Art_Config.xml</File></UpdateDatabase></FrontEndActions>]]></FrontEndActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Gathering_Storm_Demo_Mod.Art.xml" />
+    <None Include="Gathering Storm Demo Mod.Art.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Artdefs\LeaderFallbacks.artdef">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Artdefs\Leaders.artdef">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Cartographer_Unit.xml">
       <SubType>Content</SubType>
     </Content>
@@ -52,6 +58,9 @@
     <Content Include="FrontEnd\Demo_Leader_Config_Text.xml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Icons\Icons.xml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="InGame\Demo_Civilization.xml">
       <SubType>Content</SubType>
     </Content>
@@ -64,16 +73,31 @@
     <Content Include="InGame\Demo_Traits.xml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Leader_Art_Config.xml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Loyalty_Policy.xml">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Demo_Script.lua">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="XLPs\Atlas.xlp">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="XLPs\LeaderFallbacks.xlp">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="XLPs\UILeaders.xlp">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FrontEnd" />
     <Folder Include="InGame" />
+    <Folder Include="Artdefs" />
+    <Folder Include="Icons" />
+    <Folder Include="XLPs" />
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
 </Project>
