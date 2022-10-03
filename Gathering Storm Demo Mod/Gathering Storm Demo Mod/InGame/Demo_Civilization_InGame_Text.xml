@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<LocalizedText>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_DESCRIPTION</Tag>
+			<Text>Demo Empire</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_ADJECTIVE</Tag>
+			<Text>Demoite</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVINFO_DEMO_SAM_LOCATION</Tag>
+			<Text>Nowhere in particular</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVINFO_DEMO_SAM_POPULATION</Tag>
+			<Text>Unknown</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_LEADER_DEMO_LEADER_SAM_QUOTE</Tag>
+			<Text>Testing, testing, 1, 2, 3...</Text>
+		</Row>
+		<!-- CITY NAMES -->
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_1</Tag>
+			<Text>Demo Capital</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_2</Tag>
+			<Text>Demo City 1</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_3</Tag>
+			<Text>Demo City 2</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_4</Tag>
+			<Text>Demo City 3</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_5</Tag>
+			<Text>Demo City 4</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_6</Tag>
+			<Text>Demo City 5</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_7</Tag>
+			<Text>Demo City 6</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_8</Tag>
+			<Text>Demo City 7</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_9</Tag>
+			<Text>Demo City 8</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CIVILIZATION_DEMO_SAM_CITY_10</Tag>
+			<Text>Demo City 9</Text>
+		</Row>
+		<!-- CITIZEN NAMES -->
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CITIZEN_DEMO_MALE_1</Tag>
+			<Text>Demo Male 1</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CITIZEN_DEMO_MALE_2</Tag>
+			<Text>Demo Male 2</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CITIZEN_DEMO_MALE_3</Tag>
+			<Text>Demo Male 3</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CITIZEN_DEMO_FEMALE_1</Tag>
+			<Text>Demo Female 1</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CITIZEN_DEMO_FEMALE_2</Tag>
+			<Text>Demo Female 2</Text>
+		</Row>
+		<Row>
+			<Language>en_US</Language>
+			<Tag>LOC_CITIZEN_DEMO_FEMALE_3</Tag>
+			<Text>Demo Female 3</Text>
+		</Row>
+		
+	</LocalizedText>
+</GameData>

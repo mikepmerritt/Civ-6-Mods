@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<IconDefinitions>
+		<Row>
+			<Name>ICON_CIVILIZATION_DEMO_SAM</Name>
+			<Atlas>ICON_ATLAS_CIVILIZATIONS</Atlas>
+			<Index>0</Index>
+		</Row>
+
+		<Row>
+			<Name>ICON_LEADER_DEMO_LEADER_SAM</Name>
+			<Atlas>ICON_ATLAS_LEADERS</Atlas>
+			<Index>0</Index>
+		</Row>
+	</IconDefinitions>
+</GameData>
