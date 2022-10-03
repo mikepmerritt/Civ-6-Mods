@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <GameData>
+	<Types>
+		<Row>
+			<Type>CIVILIZATION_DEMO_SAM</Type>
+			<Kind>KIND_CIVILIZATION</Kind>
+		</Row>
+	</Types>
+	
 	<Civilizations>
 		<Row>
 			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>

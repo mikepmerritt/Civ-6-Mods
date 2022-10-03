@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <GameData>
+	<Types>
+		<Row>
+			<Type>LEADER_DEMO_LEADER_SAM</Type>
+			<Kind>KIND_LEADER</Kind>
+		</Row>
+	</Types>
+	
 	<Leaders>
 		<Row>
 			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>

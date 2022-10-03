@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <GameData>
+	<Types>
+		<Row>
+			<Type>TRAIT_CIVILIZATION_DEMO_SAM</Type>
+			<Kind>KIND_TRAIT</Kind>
+		</Row>
+		<Row>
+			<Type>TRAIT_LEADER_DEMO_SAM</Type>
+			<Kind>KIND_TRAIT</Kind>
+		</Row>
+	</Types>
+	
 	<Traits>
 		<Row>
 			<TraitType>TRAIT_CIVILIZATION_DEMO_SAM</TraitType>
