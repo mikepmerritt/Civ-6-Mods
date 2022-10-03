@@ -25,4 +25,27 @@
 			<Description>LOC_TRAIT_LEADER_DEMO_LEADER_SAM_DESCRIPTION</Description>
 		</Row>
 	</Traits>
+
+	<!-- LEADER TRAIT MODIFIER -->
+	<TraitModifiers>
+		<Row>
+			<TraitType>TRAIT_LEADER_DEMO_SAM</TraitType>
+			<ModifierId>TRAIT_DEMO_LEADER_SAM_DIPLOMATIC_GOVERNMENT_SLOT</ModifierId>
+		</Row>
+	</TraitModifiers>
+
+	<Modifiers>
+		<Row>
+			<ModifierId>TRAIT_DEMO_LEADER_SAM_DIPLOMATIC_GOVERNMENT_SLOT</ModifierId>
+			<ModifierType>MODIFIER_PLAYER_CULTURE_ADJUST_GOVERNMENT_SLOTS_MODIFIER</ModifierType>
+		</Row>
+	</Modifiers>
+
+	<ModifierArguments>
+		<Row>
+			<ModifierId>TRAIT_DEMO_LEADER_SAM_DIPLOMATIC_GOVERNMENT_SLOT</ModifierId>
+			<Name>GovernmentSlotType</Name>
+			<Value>SLOT_DIPLOMATIC</Value>
+		</Row>
+	</ModifierArguments>
 </GameData>
