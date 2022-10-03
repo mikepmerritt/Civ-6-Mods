@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<Civilizations>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<Name>LOC_CIVILATION_DEMO_SAM_NAME</Name>
+			<Description>LOC_CIVILIZATION_DEMO_SAM_DESCRIPTION</Description>
+			<Adjective>LOC_CIVILIZATION_DEMO_SAM_ADJECTIVE</Adjective>
+			<RandomCityNameDepth>10</RandomCityNameDepth>
+			<StartingCivilizationLevelType>CIVILIZATION_LEVEL_FULL_CIV</StartingCivilizationLevelType>
+		</Row>
+	</Civilizations>
+
+	<CivilizationInfo>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<Header>LOC_CIVINFO_LOCATION</Header>
+			<Caption>LOC_CIVINFO_DEMO_SAM_LOCATION</Caption>
+			<SortIndex>10</SortIndex>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<Header>LOC_CIVINFO_POPULATION</Header>
+			<Caption>LOC_CIVINFO_DEMO_SAM_POPULATION</Caption>
+			<SortIndex>20</SortIndex>
+		</Row>
+	</CivilizationInfo>
+
+	<CivilizationLeaders>
+		<Row>
+			<LeaderType>LEADER_DEMO_LEADER_SAM</LeaderType>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CapitalName>LOC_CIVILIZATION_DEMO_SAM_CITY_1</CapitalName>
+		</Row>
+	</CivilizationLeaders>
+
+	<CivilizationTraits>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<TraitType>TRAIT_CIVILIZATION_DEMO_SAM</TraitType>
+		</Row>
+	</CivilizationTraits>
+
+	<CityNames>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_1</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_2</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_3</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_4</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_5</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_6</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_7</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_8</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_9</CityName>
+		</Row>
+		<Row>
+			<CivilizationType>CIVILIZATION_DEMO_SAM</CivilizationType>
+			<CityName>LOC_CIVILIZATION_DEMO_SAM_CITY_10</CityName>
+		</Row>
+	</CityNames>
+</GameData>

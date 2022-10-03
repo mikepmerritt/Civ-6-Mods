@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GameData>
+	<Traits>
+		<Row>
+			<TraitType>TRAIT_CIVILIZATION_DEMO_SAM</TraitType>
+			<Name>LOC_TRAIT_CIVILIZATION_DEMO_SAM_NAME</Name>
+			<Description>LOC_TRAIT_CIVILIZATION_DEMO_SAM_DESCRIPTION</Description>
+		</Row>
+
+		<Row>
+			<TraitType>TRAIT_LEADER_DEMO_SAM</TraitType>
+			<Name>LOC_TRAIT_LEADER_DEMO_LEADER_SAM_NAME</Name>
+			<Description>LOC_TRAIT_LEADER_DEMO_LEADER_SAM_DESCRIPTION</Description>
+		</Row>
+	</Traits>
+</GameData>
