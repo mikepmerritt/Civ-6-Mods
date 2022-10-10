@@ -1,0 +1,3 @@
+-- LocalizedText --
+INSERT INTO LocalizedText (Language, Tag, Text) VALUES ('en_US', 'LOC_GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM', 'This Campus district''s [ICON_Science] Science adjacency bonus provides [ICON_Faith] Faith as well.');
+--INSERT INTO LocalizedText (Language, Tag, Text) VALUES ('en_US', 'LOC_GREATPERSON_CAMPUS_PROPHET_POINTS_SAM', 'This Campus district provides +4 [ICON_GreatProphet] Great Prophet points per turn.');
