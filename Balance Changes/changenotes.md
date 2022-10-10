@@ -8,6 +8,15 @@ Hopefully make Hildegard of Bingen valuable as a great scientist to more players
 `ModifierId`: `GREATPERSON_HOLY_SITE_ADJACENCY_AS_SCIENCE`
 
 ### Tables and values to change:
+* `Types`
+	* Add new item
+		* Type: 'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_GREAT_PERSON_POINTS_SAM'
+		* Kind: 'KIND_MODIFIER'
+* `DynamicModifiers`
+	* Add new item
+		* ModifierType: 'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_GREAT_PERSON_POINTS_SAM'
+		* CollectionType: 'COLLECTION_OWNER' -- NOTE: This is always the case for great people because of how they attach modifiers to entities
+		* EffectType: 'EFFECT_ADJUST_DISTRICT_GREAT_PERSON_POINTS'
 * `Modifiers`
 	* Add new item
 		* ModifierId: 'GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM'
@@ -18,7 +27,7 @@ Hopefully make Hildegard of Bingen valuable as a great scientist to more players
 		* Repeatable: 0
 	* Add new item
 		* ModifierId: 'GREATPERSON_CAMPUS_PROPHET_POINTS_SAM'
-		* ModifierType: 'MODIFIER_SINGLE_CITY_DISTRICTS_ADJUST_GREAT_PERSON_POINTS'
+		* ModifierType: 'MODIFIER_SINGLE_CITY_DISTRICT_ADJUST_GREAT_PERSON_POINTS_SAM'
 		* RunOnce: 0 - NOTE: If not working, try changing this to 1
 		* NewOnly: 0
 		* Permanent: 0 - NOTE: If not working, try changing this to 1
