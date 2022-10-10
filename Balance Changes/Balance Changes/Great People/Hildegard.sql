@@ -19,8 +19,8 @@ WHERE GreatPersonIndividualType = 'GREAT_PERSON_INDIVIDUAL_HILDEGARD_OF_BINGEN' 
 --WHERE GreatPersonIndividualType = 'GREAT_PERSON_INDIVIDUAL_HILDEGARD_OF_BINGEN' AND ModifierId = 'GREATPERSON_FAITH';
 
 -- ModifierStrings --
-INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES ('GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM', 'Context', 'LOC_GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM');
---INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES ('GREATPERSON_CAMPUS_PROPHET_POINTS_SAM', 'Context', 'LOC_GREATPERSON_CAMPUS_PROPHET_POINTS_SAM');
+INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES ('GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM', 'Summary', 'LOC_GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM');
+--INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES ('GREATPERSON_CAMPUS_PROPHET_POINTS_SAM', 'Summary', 'LOC_GREATPERSON_CAMPUS_PROPHET_POINTS_SAM');
 
 -- ModifierArguments --
 -- adding the arguments for the modifier that handles converting science yield to faith --
