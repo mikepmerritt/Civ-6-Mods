@@ -8,12 +8,14 @@ SET ActionRequiresCompletedDistrictType = 'DISTRICT_CAMPUS'
 WHERE GreatPersonIndividualType = 'GREAT_PERSON_INDIVIDUAL_HILDEGARD_OF_BINGEN';
 
 -- GreatPersonIndividualActionModifiers --
+-- replacing the holy site science yield with the campus faith yield --
 UPDATE GreatPersonIndividualActionModifiers
 SET ModifierId = 'GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM'
 WHERE GreatPersonIndividualType = 'GREAT_PERSON_INDIVIDUAL_HILDEGARD_OF_BINGEN' AND ModifierId = 'GREATPERSON_HOLY_SITE_ADJACENCY_AS_SCIENCE';
 
+-- replacing the additional faith modifier with the great prophet points one --
 UPDATE GreatPersonIndividualActionModifiers
-SET ModifierId = 'GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM'
+SET ModifierId = 'GREATPERSON_CAMPUS_PROPHET_POINTS_SAM'
 WHERE GreatPersonIndividualType = 'GREAT_PERSON_INDIVIDUAL_HILDEGARD_OF_BINGEN' AND ModifierId = 'GREATPERSON_FAITH';
 
 -- ModifierStrings --
@@ -21,8 +23,10 @@ INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES ('GREATPERSON_CAM
 INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES ('GREATPERSON_CAMPUS_PROPHET_POINTS_SAM', 'Context', 'LOC_GREATPERSON_CAMPUS_PROPHET_POINTS_SAM');
 
 -- ModifierArguments --
+-- adding the arguments for the modifier that handles converting science yield to faith --
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM', 'YieldTypeToMirror', 'ARGTYPE_IDENTITY', 'YIELD_SCIENCE');
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('GREATPERSON_CAMPUS_ADJACENCY_AS_FAITH_SAM', 'YieldTypeToGrant', 'ARGTYPE_IDENTITY', 'YIELD_FAITH');
 
--- TODO: add argument modifiers for GREATPERSON_CAMPUS_PROPHET_POINTS_SAM --
--- TODO: add separate script with localized text that is missing -- 
+-- adding the arguments for the modifier that handles adding great prophet points to the campus yields --
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('GREATPERSON_CAMPUS_PROPHET_POINTS_SAM', 'GreatPersonClassType', 'ARGTYPE_IDENTITY', 'GREAT_PERSON_CLASS_PROPHET');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('GREATPERSON_CAMPUS_PROPHET_POINTS_SAM', 'Amount', 'ARGTYPE_IDENTITY', 4);

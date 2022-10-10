@@ -21,12 +21,24 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Balance Changes</AssemblyName>
     <RootNamespace>Balance Changes</RootNamespace>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="ModifyHildegard"><File>Great People/Hildegard.sql</File></UpdateDatabase><UpdateText id="ModifyHildegardText"><File>Great People/Hildegard_Text.sql</File></UpdateText></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Balance_Changes.Art.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Great People" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Great People\Hildegard.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Great People\Hildegard_Text.sql">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
 </Project>
