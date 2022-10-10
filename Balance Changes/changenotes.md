@@ -19,7 +19,7 @@ Hopefully make Hildegard of Bingen valuable as a great scientist to more players
 	* Add new item
 		* ModifierId: 'GREATPERSON_CAMPUS_PROPHET_POINTS_SAM'
 		* ModifierType: 'MODIFIER_SINGLE_CITY_DISTRICTS_ADJUST_GREAT_PERSON_POINTS'
-		* RunOnce: 0
+		* RunOnce: 0 - NOTE: If not working, try changing this to 1
 		* NewOnly: 0
 		* Permanent: 0 - NOTE: If not working, try changing this to 1
 		* Repeatable: 0
@@ -50,6 +50,14 @@ Hopefully make Hildegard of Bingen valuable as a great scientist to more players
 			* Name: 'YieldTypeToGrant'
 			* Type: 'ARGTYPE_IDENTITY'
 			* Value: 'YIELD_FAITH'
+		* 'ModifierId': 'GREATPERSON_CAMPUS_PROPHET_POINTS_SAM'
+			* Name: 'GreatPersonClassType'
+			* Type: 'ARGTYPE_IDENTITY'
+			* Value: 'GREAT_PERSON_CLASS_PROPHET'
+		* 'ModifierId': 'GREATPERSON_CAMPUS_PROPHET_POINTS_SAM'
+			* Name: 'Amount'
+			* Type: 'ARGTYPE_IDENTITY'
+			* Value: 4
 		
 ### Useful queries:
 Used to find ModifierType needed to make changes:
