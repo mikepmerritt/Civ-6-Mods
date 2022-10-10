@@ -1,0 +1,7 @@
+INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, NewOnly, Permanent, Repeatable, SubjectRequirementSetId) VALUES ('REMOVE_MONUMENT_YIELD_IF_AHEAD', 'MODIFIER_PLAYER_CITIES_ADJUST_BUILDING_YIELD_MODIFIER', 0, 0, 0, 0, 'PLAYER_HAS_HIGH_SCIENCE');
+
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('REMOVE_MONUMENT_YIELD_IF_AHEAD', 'YieldType', 'ARGTYPE_IDENTITY', 'YIELD_CULTURE');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('REMOVE_MONUMENT_YIELD_IF_AHEAD', 'BuildingType', 'ARGTYPE_IDENTITY', 'BUILDING_MONUMENT');
+INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES ('REMOVE_MONUMENT_YIELD_IF_AHEAD', 'Amount', 'ARGTYPE_IDENTITY', -100);
+
+INSERT INTO BuildingModifiers (BuildingType, ModifierId) VALUES ('BUILDING_MONUMENT', 'REMOVE_MONUMENT_YIELD_IF_AHEAD');

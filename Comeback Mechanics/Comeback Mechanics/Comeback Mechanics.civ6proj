@@ -21,12 +21,21 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Comeback Mechanics</AssemblyName>
     <RootNamespace>Comeback Mechanics</RootNamespace>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DemoRemoveMonumentYields"><File>Demo/Remove_Monument_Yields_Demo.sql</File></UpdateDatabase></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="Comeback_Mechanics.Art.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Demo" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Demo\Remove_Monument_Yields_Demo.sql">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
 </Project>
