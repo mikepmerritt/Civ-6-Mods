@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>Capture Zones</Name>
+    <Guid>434cb127-ce7f-4070-8f20-91ded53332a5</Guid>
+    <ProjectGuid>022e3a7a-c542-4529-8011-ee58b399fe83</ProjectGuid>
+    <ModVersion>1</ModVersion>
+    <Teaser>Implements capture zones into Civilization VI as a new feature.</Teaser>
+    <Description>Implements capture zones into Civilization VI as a new feature.</Description>
+    <Authors>Scarfy, Meepix</Authors>
+    <SpecialThanks>
+    </SpecialThanks>
+    <AffectsSavedGames>true</AffectsSavedGames>
+    <SupportsSinglePlayer>true</SupportsSinglePlayer>
+    <SupportsMultiplayer>true</SupportsMultiplayer>
+    <SupportsHotSeat>true</SupportsHotSeat>
+    <CompatibleVersions>1.2,2.0</CompatibleVersions>
+    <AssociationData><![CDATA[<Associations>
+  <Dependency type="Dlc" title="Expansion: Gathering Storm" id="4873eb62-8ccc-4574-b784-dda455e74e68" />
+</Associations>]]></AssociationData>
+    <AssemblyName>CaptureZones</AssemblyName>
+    <RootNamespace>CaptureZones</RootNamespace>
+    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="CaptureZones.Art.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CaptureZoneMarking.lua">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
+</Project>
