@@ -47,15 +47,10 @@ A second attempt at implementing comeback mechanics for players that are falling
 This approach will involve setting up empty requirements and requirement sets that will be satisfied by a Lua script. These requirement sets will be attached to modifiers that are present on relevant buildings (libraries, monuments) and will be checked at the beginning of every turn.
 
 ### Insertions
-- `Types`
-	- Item 1
-		- Type: 'REQIREMENT_PLAYER_FELL_BEHIND_SAM'
-		- Kind: 'KIND_REQUIREMENT'
-
 - `Requirements`
 	- Item 1
 		- RequirementId: 'REQUIRES_HAS_BEHIND_SCIENCE_SAM'
-		- RequirementType: 'REQIREMENT_PLAYER_FELL_BEHIND_SAM'
+		- RequirementType: 'REQUIREMENT_NOT_MET'
 		- Likeliness: 0 - NOTE: Unsure what these do
 		- Impact: 0 - NOTE: Unsure what these do
 		- Reverse: 0 - NOTE: Unsure what these do
@@ -64,7 +59,7 @@ This approach will involve setting up empty requirements and requirement sets th
 		- Triggered: 0 - NOTE: Unsure what these do
 	- Item 2
 		- RequirementId: 'REQUIRES_HAS_BEHIND_CULTURE_SAM'
-		- RequirementType: 'REQIREMENT_PLAYER_FELL_BEHIND_SAM'
+		- RequirementType: 'REQUIREMENT_NOT_MET'
 		- Likeliness: 0 - NOTE: Unsure what these do
 		- Impact: 0 - NOTE: Unsure what these do
 		- Reverse: 0 - NOTE: Unsure what these do

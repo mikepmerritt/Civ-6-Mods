@@ -12,7 +12,7 @@ local function GetAllRequirementSets()
             local inner_count = #(GameEffects.GetRequirementSetInnerRequirements(v) or {});
             local ref_count = GameEffects.GetRequirementSetReferenceCount(v);
 
-			if (subject_name == "City Center") then
+			if (subject_name == "City Center" or context_name == "City Center") then
 				print("i: " .. i .. " v: " .. v);
 				print("defId: " .. req_set_def.Id);
 				print("subject: " .. subject);
@@ -28,7 +28,7 @@ local function GetAllRequirementSets()
 end
 
 local function Initialize()
-    Events.TurnBegin.Add(GetAllRequirementSets);
+    Events.TurnEnd.Add(GetAllRequirementSets);
 end
 
 Initialize()
