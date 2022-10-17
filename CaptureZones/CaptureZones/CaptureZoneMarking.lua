@@ -5,14 +5,17 @@
 -- TODO: make it so that capture zones plots cannot have districts placed on them
 -- TODO: make a separate function to re-evaluate capture zone city markings, to handle transferring tiles, culture bombs, razing of cities, founding of new cities, etc
 -- 		 essentially, call on turn start (or maybe a better event exists), search all cities, if marked tile inside mark city (1), else unmark city (nil)
+-- TODO: add parameters to differentiate between era behavior, if deemed necessary
 local function GenerateCaptureZones()
-	-- goal:
+	-- general function idea:
 	-- for each player
 	-- go through all player's cities
 	-- find distance between player's cities to all enemies cities
-	-- save min distance along with player city
-	
-	-- if a suitable tile is found, mark the tile, then mark the city
+	-- save min distance along with player city to a table
+	-- pick min distance city from that table
+	-- if a suitable tile is found in min distance city, mark the tile, then mark the city, then move on to next player
+	-- if a suitable tile is not found in min distance city, delete the city from the table and try next min distance city
+	-- if no city can be found that can be marked, give up and move on to next player
 
 	-- for each player
 	for _, player in pairs(PlayerManager.GetAliveMajors()) do
@@ -50,7 +53,7 @@ local function GenerateCaptureZones()
 			
 			-- if no city was found (the for loop didn't run because all cities were eliminated as options) exit without marking and print that for error tracking
 			if minID < 0 and minDistance < 0 then
-				print("Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
+				print("MARKING: Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
 				markingFinished = true
 			else
 				-- there is an eligible city, so fetch it
@@ -67,6 +70,7 @@ local function GenerateCaptureZones()
 						-- if works, mark tile and exit
 						plot:SetProperty("CAPTURE_SAM", 1)
 						minCity:SetProperty("CAPTURE_SAM", 1)
+						print("MARKING: Player " .. player:GetID() .. " had the tile (" .. plot:GetX() .. ", " .. plot:GetY() ..") marked successfully.")
 						markFinished = true;
 					end
 				end
@@ -91,7 +95,7 @@ local function PrintAllMarks()
 			local id = "(" .. x .. ", " .. y .. ")"
 			local currPlot = Map.GetPlot(x, y)
 			allPlots[id] = currPlot
-			if currPlot ~= nil and currPlot:GetProperty("MARKED_SAM") ~= nil then
+			if currPlot ~= nil and currPlot:GetProperty("CAPTURE_SAM") ~= nil then
 				markedPlots[id] = Map.GetPlot(x, y)
 				markedPlotsOutput = markedPlotsOutput .. id .. " "
 			end
@@ -106,6 +110,7 @@ local function PrintCityTiles()
 	local player = PlayerManager.GetAliveMajors()[1]
 	local capital = player:GetCities():GetCapitalCity()
 	local plots = capital:GetOwnedPlots()
+	print("TILE INFORMATION:")
 	for _, plot in pairs(plots) do
 		print("x: " .. plot:GetX() .. " y: " .. tostring(plot:GetY()))
 		print("district: " .. tostring(plot:GetDistrictType()))
@@ -113,6 +118,12 @@ local function PrintCityTiles()
 		print("water: " .. tostring(plot:IsWater()))
 		print("not natural wonder?: " .. tostring(plot:IsNaturalWonder()))
 		print("mountain: " .. tostring(plot:IsMountain()))
+		if(plot:GetProperty("CAPTURE_SAM") ~= nil) then
+			print("capture zone: true")
+		else
+			print("capture zone: false")
+		end
+		print()
 	end
 end
 
@@ -126,12 +137,9 @@ local function MarkPlot(previousEra, newEra)
 
 	print("Players left: " .. livingPlayersString)
 
-	--local unmarkedTile = Map.GetPlot(11, 11)
-	--local markedTile = Map.GetPlot(10, 11)
-
 	if newEra == 0 then
 		-- game start, used for debugging/testing
-		
+
 	elseif newEra == 1 then
 		-- classical, use only for debugging
 
@@ -167,10 +175,6 @@ local function MarkPlot(previousEra, newEra)
 		GenerateCaptureZones()
 
 	end
-	
-	-- need or "0" because nil can't be printed or worked with
-	-- print("Marked tile flag: " .. (markedTile:GetProperty("MARKED_SAM") or 0))
-	-- print("Unmarked tile flag: " .. (unmarkedTile:GetProperty("MARKED_SAM") or 0))
 end
 
 local function Initialize()
