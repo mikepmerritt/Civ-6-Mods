@@ -81,58 +81,70 @@ local function MarkPlot(previousEra, newEra)
 		-- go through all player's cities
 		-- find distance between player's cities to all enemies cities
 		-- save min distance along with player city
-		-- look through tiles in player city chosen for:
-		-- + no district 
-		-- + no resource
-		-- + land
-		-- + passable
-		-- + not natural wonder
-		-- + not impassible
+		
 		-- if a suitable tile is found, mark the tile, then mark the city
 
-		-- -- for each player
-		-- for _, player in pairs(PlayerManager.GetAliveMajors()) do
-		-- 	local cityMinDistancesToEnemy:table = {}
+		-- for each player
+		for _, player in pairs(PlayerManager.GetAliveMajors()) do
+			local cityMinDistancesToEnemy:table = {}
 
-		-- 	-- go through all player's cities
-		-- 	-- find distance between player's cities to all enemies cities
-		-- 	for _, pCity in pairs(player:GetCities():Members()) do
-		-- 		for _, enemy in pair(PlayerManager.GetAliveMajors()) do
-		-- 			for _, eCity in pairs(enemy:GetCities():Members()) do
-		-- 				if player:GetID() ~= enemy:GetID() and pCity:GetProperty("CAPTURE_SAM") == nil and eCity:GetProperty("CAPTURE_SAM") == nil then
-		-- 					-- save min distance along with player city
-		-- 					local distance = Map.GetPlotDistance(pCity:GetPlot():GetX(), pCity:GetPlot():GetY(), eCity:GetPlot():GetX(), eCity:GetPlot():GetY())
-		-- 					if cityMinDistancesToEnemy[pCity:GetID()] == nil or cityMinDistancesToEnemy[pCity:GetID()] > distance then
-		-- 						cityMinDistancesToEnemy[pCity:GetID()] = distance;
-		-- 					end
-		-- 				end
-		-- 			end
-		-- 		end
-		-- 	end
+			-- go through all player's cities
+			-- find distance between player's cities to all enemies cities
+			for _, pCity in pairs(player:GetCities():Members()) do
+				for _, enemy in pair(PlayerManager.GetAliveMajors()) do
+					for _, eCity in pairs(enemy:GetCities():Members()) do
+						if player:GetID() ~= enemy:GetID() and pCity:GetProperty("CAPTURE_SAM") == nil and eCity:GetProperty("CAPTURE_SAM") == nil then
+							-- save min distance along with player city
+							local distance = Map.GetPlotDistance(pCity:GetPlot():GetX(), pCity:GetPlot():GetY(), eCity:GetPlot():GetX(), eCity:GetPlot():GetY())
+							if cityMinDistancesToEnemy[pCity:GetID()] == nil or cityMinDistancesToEnemy[pCity:GetID()] > distance then
+								cityMinDistancesToEnemy[pCity:GetID()] = distance;
+							end
+						end
+					end
+				end
+			end
 
-		-- 	local markingFinished = false
+			local markingFinished = false
 
-		-- 	while not markFinished do
-		-- 		local minID = -1
-		-- 		local minDistance = -1
-		-- 		for cityID, distance in pairs(cityMinDistancesToEnemy) do
-		-- 			if distance > minDistance then
-		-- 				minID = cityID
-		-- 				minDistance = distance
-		-- 			end
-		-- 		end
+			while not markFinished do
+				local minID = -1 -- failsafe value
+				local minDistance = -1 -- failsafe value
+
+				-- find city with minimum distance from enemy
+				for cityID, distance in pairs(cityMinDistancesToEnemy) do
+					if distance > minDistance then
+						minID = cityID
+						minDistance = distance
+					end
+				end
 				
-		-- 		if minID < 0 and minDistance < 0 then
-		-- 			print("Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
-		-- 			markingFinished = true
-		-- 		else
-		-- 			-- check conditions on every tile in city
-		-- 			for _, plot in pairs(CityManager.GetCity(minID):GetOwnedPlots()) do
-		-- 				if plot:GetResourceType() < 0 and plot:GetDistrictType < 0 and 
-		-- 			-- if works, mark tile and exit
-		-- 			-- if fails, remove entry from cityMinDistancesToEnemy
-		-- 	end
-		-- end
+				-- if no city was found (the for loop didn't run because all cities were eliminated as options) exit without marking and print that for error tracking
+				if minID < 0 and minDistance < 0 then
+					print("Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
+					markingFinished = true
+				else
+					-- there is an eligible city, so fetch it
+					local minCity = CityManager.GetCity(minID)
+					-- check conditions on every tile in the city:
+					-- + a tile hasn't been marked already in this go
+					-- + no district 
+					-- + no resource
+					-- + land (no water)
+					-- + no mountain
+					-- + not natural wonder
+					for _, plot in pairs(minCity:GetOwnedPlots()) do
+						if not markFinished and plot:GetDistrictType < 0 and plot:GetResourceType() < 0 and not plot:IsWater() and not plot:IsMountain() and not plot:IsNaturalWonder() then
+							-- if works, mark tile and exit
+							plot:SetProperty("CAPTURE_SAM", 1)
+							minCity:SetProperty("CAPTURE_SAM", 1)
+							markFinished = true;
+						end
+					end
+
+					-- if no tile in the closest city to an enemy could be marked, delete it from cityMinDistancesToEnemy and continue while loop
+					cityMinDistancesToEnemy[minID] = nil
+			end
+		end
 
 	elseif newEra == 4 then
 		-- industrial
@@ -148,7 +160,7 @@ end
 local function Initialize()
 	-- plot marking
 	Events.GameEraChanged.Add(MarkPlot)
-	Events.TurnEnd.Add(PrintCityTiles)
+	-- Events.TurnEnd.Add(PrintCityTiles)
 end
 
 Initialize()
