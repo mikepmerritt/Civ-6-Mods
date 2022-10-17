@@ -27,7 +27,7 @@ local function GenerateCaptureZones()
 		for _, pCity in player:GetCities():Members() do
 			for _, enemy in pairs(PlayerManager.GetAliveMajors()) do
 				for _, eCity in enemy:GetCities():Members() do
-					if player:GetID() ~= enemy:GetID() and pCity:GetProperty("CAPTURE_SAM") == nil and eCity:GetProperty("CAPTURE_SAM") == nil then
+					if player:GetID() ~= enemy:GetID() and pCity:GetProperty("CAPTURE_SAM") == nil then
 						-- save min distance along with player city
 						local distance = Map.GetPlotDistance(pCity:GetPlot():GetX(), pCity:GetPlot():GetY(), eCity:GetPlot():GetX(), eCity:GetPlot():GetY())
 						local position = pCity:GetPlot():GetX() .. " " .. pCity:GetPlot():GetY()
@@ -53,27 +53,22 @@ local function GenerateCaptureZones()
 				end
 			end
 			
+			-- -- ok
+			-- print("MARKING DEBUG: ALL CITY DISTANCES")
+			-- for position, distance in pairs(cityMinDistancesToEnemy) do
+			-- 	print("city position: " .. position .. " distance: " .. distance)
+			-- end
+
 			-- if no city was found (the for loop didn't run because all cities were eliminated as options) exit without marking and print that for error tracking
 			if minLocation == nil and minDistance < 0 then
 				print("MARKING: Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
 				markingFinished = true
 			else
-				-- ok
-				-- print("MARKING DEBUG: ALL CITY DISTANCES")
-				-- for position, distance in pairs(cityMinDistancesToEnemy) do
-				-- 	print("city position: " .. position .. " distance: " .. distance)
-				-- end
-
-				-- ok
-				-- print(minLocation)
-				-- print(minDistance)
-				
 				local minCityPlotCoordinates = {}
 				for coord in minLocation:gmatch("%S+") do
 					table.insert(minCityPlotCoordinates, coord)
 				end
-				print(minCityPlotCoordinates[1]) -- nil?
-				print(minCityPlotCoordinates[2]) -- nil?
+				
 				local minCity = CityManager.GetCityAt(minCityPlotCoordinates[1], minCityPlotCoordinates[2])
 				-- check conditions on every tile in the city:
 				-- + a tile hasn't been marked already in this go
