@@ -49,7 +49,7 @@ local function GetAllRequirementSets()
 						-- checking opponent culture -- 
 						local opponent_player_index = 1;
 						if (target_player_index == 1) then
-							local opponent_player_index = 2;
+							opponent_player_index = 2;
 						end
 						local opponent_player_culture = living_players[opponent_player_index]:GetCulture():GetCultureYield();
 						print("Opponent culture yield: " .. opponent_player_culture);
