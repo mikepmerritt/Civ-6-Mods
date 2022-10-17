@@ -46,9 +46,9 @@ local function GenerateCaptureZones()
 			local minDistance = -1 -- failsafe value
 
 			-- find city with minimum distance from enemy
-			for cityID, distance in pairs(cityMinDistancesToEnemy) do
+			for location, distance in pairs(cityMinDistancesToEnemy) do
 				if distance > minDistance then
-					minLocation = cityID
+					minLocation = location
 					minDistance = distance
 				end
 			end
@@ -58,9 +58,19 @@ local function GenerateCaptureZones()
 				print("MARKING: Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
 				markingFinished = true
 			else
-				local minCityPlotCoordinates:table = {}
-				for key, value in string.gmatch(minLocation, "%S+") do
-					minCityPlotCoordinates[key] = tonumber(value)
+				-- ok
+				-- print("MARKING DEBUG: ALL CITY DISTANCES")
+				-- for position, distance in pairs(cityMinDistancesToEnemy) do
+				-- 	print("city position: " .. position .. " distance: " .. distance)
+				-- end
+
+				-- ok
+				-- print(minLocation)
+				-- print(minDistance)
+				
+				local minCityPlotCoordinates = {}
+				for coord in minLocation:gmatch("%S+") do
+					table.insert(minCityPlotCoordinates, coord)
 				end
 				print(minCityPlotCoordinates[1]) -- nil?
 				print(minCityPlotCoordinates[2]) -- nil?
