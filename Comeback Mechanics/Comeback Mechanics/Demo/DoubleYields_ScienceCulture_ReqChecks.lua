@@ -1,5 +1,6 @@
 -- fetching and printing out all requirement sets
 local function GetAllRequirementSets()
+	-- getting requirement set details, taken from the live tuner panel Requirements.ltp --
     if (GameEffects) then
         local requirement_sets = GameEffects.GetRequirementSets() or { };
         for i, v in ipairs(requirement_sets) do
@@ -12,7 +13,8 @@ local function GetAllRequirementSets()
             local inner_count = #(GameEffects.GetRequirementSetInnerRequirements(v) or {});
             local ref_count = GameEffects.GetRequirementSetReferenceCount(v);
 
-			if (subject_name == "City Center" or context_name == "City Center") then
+			-- only checking for requirement sets with name PLAYER_FALLS_BEHIND_CULTURE_SAM
+			if (req_set_def.Id == "PLAYER_FALLS_BEHIND_CULTURE_SAM") then
 				print("i: " .. i .. " v: " .. v);
 				print("defId: " .. req_set_def.Id);
 				print("subject: " .. subject);
@@ -27,8 +29,37 @@ local function GetAllRequirementSets()
     end
 end
 
+local function TestOutput()
+	-- check player's culture compared to other players --
+	local living_players = PlayerManager.GetAliveMajors();
+	print("checking players");
+
+	local target_player_index = -1;
+	-- determining which player owns the city --
+	for player_index, player in ipairs(living_players) do
+		print("player: " .. player_index);
+		local cities = player:GetCities();
+
+		for city_index, city in cities:Members() do
+			-- getting the city name, taken from the live tuner panel City.ltp --
+			local cityName = string.gsub(city:GetName(), "LOC_CITY_NAME_", "");
+			local cityLocName = string.upper(Locale.Lookup(city:GetName()));
+			if ( #cityName > #cityLocName ) then
+				cityName = cityLocName;
+			end
+
+			local cityId = city:GetID();
+            print("\tcity: " .. city_index .. ", city name: " .. cityName .. ", city localized name: " .. cityLocName .. ", city ID: " .. cityId);
+		end
+						
+	end
+
+	-- useful: PlayerStats:GetNumCivicsCompleted() --
+end
+
 local function Initialize()
     Events.TurnEnd.Add(GetAllRequirementSets);
+	Events.TurnBegin.Add(TestOutput);
 end
 
 Initialize()
