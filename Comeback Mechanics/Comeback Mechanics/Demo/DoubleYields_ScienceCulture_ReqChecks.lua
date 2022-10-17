@@ -13,19 +13,10 @@ local function GetAllRequirementSets()
 
 			-- only checking for requirement sets with name PLAYER_FALLS_BEHIND_CULTURE_SAM and PLAYER_FALLS_BEHIND_SCIENCE_SAM
 			if (req_set_def.Id == "PLAYER_FALLS_BEHIND_CULTURE_SAM" or req_set_def.Id == "PLAYER_FALLS_BEHIND_SCIENCE_SAM") then
-				print("i: " .. i .. " v: " .. v);
-				print("defId: " .. req_set_def.Id);
-				print("subject_id: " .. subject_id);
-				print("subject_name: " .. subject_name);
-				print("context_id: " .. context_id);
-				print("context_name: " .. context_name);
-				print("state: " .. state);
-
-				-- check player's culture compared to other players --
-				local living_players = PlayerManager.GetAliveMajors();
-
-				local target_player_index = -1;
 				-- determining which player owns the city --
+				local living_players = PlayerManager.GetAliveMajors();
+				local target_player_index = -1;
+				
 				for player_index, player in ipairs(living_players) do
 					local cities = player:GetCities();
 
@@ -41,17 +32,44 @@ local function GetAllRequirementSets()
                 -- initially hoped to see if they were a set amount of civics behind --
                 -- PlayerStats:GetNumCivicsCompleted() was UI only, so an alternative was found --
 				if (target_player_index ~= -1) then
-                    local target_player = living_players[target_player_index];
-                    if (target_player == nil) then
-                        print("Player is null");
-                    elseif (target_player:GetCulture() == nil) then
-                        print("Culture stats are null");
-					
-					elseif (target_player:GetCulture():GetCultureYield() == nil) then
-                        print("Culture yield is null");
-                    else
-                        print("Culture yield: " .. target_player:GetCulture():GetCultureYield());
-                    end
+					-- providing details about the requirement --
+					print("i: " .. i .. " v: " .. v);
+					print("defId: " .. req_set_def.Id);
+					print("subject_id: " .. subject_id);
+					print("subject_name: " .. subject_name);
+					print("context_id: " .. context_id);
+					print("context_name: " .. context_name);
+					print("state: " .. state);
+
+					if (req_set_def.Id == "PLAYER_FALLS_BEHIND_CULTURE_SAM") then 
+						-- fetching the culture of the player with the building --
+						local target_player_culture = living_players[target_player_index]:GetCulture():GetCultureYield();
+						print("Culture yield: " .. target_player_culture);
+
+						-- checking opponent culture -- 
+						local opponent_player_index = 1;
+						if (target_player_index == 1) then
+							local opponent_player_index = 2;
+						end
+						local opponent_player_culture = living_players[opponent_player_index]:GetCulture():GetCultureYield();
+						print("Opponent culture yield: " .. opponent_player_culture);
+
+						-- NOTE: THIS IS NOT WORKING SINCE I HAVE NOT FOUND A WAY TO UPDATE A REQUIREMENT STATE --
+						-- if behind, activate modifiers --
+						local req_def = GameEffects.GetRequirementDefinition(v-1);
+						if (opponent_player_culture - 3 > target_player_culture) then
+							print("Player has fallen behind in culture!");
+							print("ReqId: " .. req_def.Id);
+							--GameEffects.SetRequirementState(v-1, "Met");--
+						-- else deactivate modifiers --
+						else 
+							print("Player is on track in culture.");
+							print("ReqId: " .. req_def.Id);
+							--GameEffects.SetRequirementState(v-1, "NotMet");--
+						end
+					elseif (req_set_def.Id == "PLAYER_FALLS_BEHIND_SCIENCE_SAM") then
+						print("Science yield: " .. living_players[target_player_index]:GetTechs():GetScienceYield());
+					end
 				else
 					print("Player associated with this city could not be found");
 				end
