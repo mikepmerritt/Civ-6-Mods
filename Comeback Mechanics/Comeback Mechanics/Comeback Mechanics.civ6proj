@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Comeback Mechanics</AssemblyName>
     <RootNamespace>Comeback Mechanics</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DemoRemoveMonumentYields"><File>Demo/Remove_Monument_Yields_Demo.sql</File></UpdateDatabase></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DoubleCultureScience"><File>Demo/DoubleYields_ScienceCulture.sql</File></UpdateDatabase></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -33,6 +33,9 @@
     <Folder Include="Demo" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Demo\DoubleYields_ScienceCulture.sql">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Demo\Remove_Monument_Yields_Demo.sql">
       <SubType>Content</SubType>
     </Content>
