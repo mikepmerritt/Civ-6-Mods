@@ -22,6 +22,20 @@ local function PrintAllMarks()
 	print("Marked plots: " .. markedPlotsOutput)
 end
 
+-- debug function for finding out what tiles are in a city
+local function CountAndPrintCityTiles() 
+	local player = PlayerManager.GetAliveMajors()[1]
+	local capital = player:GetCities():GetCapitalCity()
+	local plots = capital:GetOwnedPlots()
+	for _, plot in pairs(plots) do
+		print("x: " .. plot:GetX() .. " y: " .. plot:GetY())
+	end
+end
+
+local function CheckIfTileInCityMarked(city)
+	local allCityTiles:table = city:GetOwnedPlots()
+end
+
 local function MarkPlot(previousEra, newEra)
 	local livingPlayers:table = PlayerManager.GetAliveMajors()
 	local livingPlayerIDs:table = PlayerManager.GetAliveMajorIDs()
@@ -43,7 +57,7 @@ local function MarkPlot(previousEra, newEra)
 
 		-- get all of the capitals
 		local capitalPlots:table = {}
-		for i=1,PlayerManager.GetAliveMajorsCount() do
+		for i=1, PlayerManager.GetAliveMajorsCount() do
 			local player = livingPlayers[i]
 			local cityList:table = player:GetCities()
 			local capital = cityList:GetCapitalCity()
@@ -75,6 +89,7 @@ end
 local function Initialize()
 	-- plot marking
 	Events.GameEraChanged.Add(MarkPlot)
+	Events.TurnEnd.Add(CountAndPrintCityTiles)
 end
 
 Initialize()
