@@ -7,8 +7,8 @@
 --INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_CULTURE_SAM', 'REQUIREMENT_PLAYER_FELL_BEHIND_SAM', 0, 0, 0, 0, 1, 0);
 
 -- New requirement sets and requirements --
-INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_SCIENCE_SAM', 'REQUIREMENT_NOT_MET', 0, 0, 0, 0, 1, 0);
-INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_CULTURE_SAM', 'REQUIREMENT_NOT_MET', 0, 0, 0, 0, 1, 0);
+INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_SCIENCE_SAM', 'REQUIREMENT_MET', 0, 0, 0, 0, 1, 0);
+INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_CULTURE_SAM', 'REQUIREMENT_MET', 0, 0, 0, 0, 1, 0);
 
 INSERT INTO RequirementSets (RequirementSetId, RequirementSetType) VALUES ('PLAYER_FALLS_BEHIND_SCIENCE_SAM', 'REQUIREMENTSET_TEST_ALL');
 INSERT INTO RequirementSets (RequirementSetId, RequirementSetType) VALUES ('PLAYER_FALLS_BEHIND_CULTURE_SAM', 'REQUIREMENTSET_TEST_ALL');

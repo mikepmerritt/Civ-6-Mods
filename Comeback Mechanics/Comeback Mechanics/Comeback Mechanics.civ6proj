@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>Comeback Mechanics</AssemblyName>
     <RootNamespace>Comeback Mechanics</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DoubleCultureScience"><File>Demo/DoubleYields_ScienceCulture.sql</File></UpdateDatabase><AddGameplayScripts id="DoubleCultureScienceChecks"><File>Demo/DoubleYields_ScienceCulture_ReqChecks.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DoubleCultureScience"><File>Demo/BonusCultureScience.sql</File></UpdateDatabase><AddGameplayScripts id="DoubleCultureScienceChecks"><File>Demo/DoubleYields_ScienceCulture_ReqChecks.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -33,6 +33,9 @@
     <Folder Include="Demo" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Demo\BonusCultureScience.sql">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Demo\DoubleYields_ScienceCulture.sql">
       <SubType>Content</SubType>
     </Content>
