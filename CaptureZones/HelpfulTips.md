@@ -51,3 +51,6 @@ When using ```Plot:GetResourceType()```, the integer returned is a reference to 
 
 ### CityManager
 * ```CityManager.GetCityAt(x, y)``` - returns a City at x, y
+
+### ResourceBuilder
+* ```ResourceBuilder.SetResourceType(plot, resourceID, otherParameter)``` - places a resource with id resourceID on Plot plot (if removing resource, set resourceID to -1 and exclude otherParameter; if placing, set otherParameter to 1 - not sure exactly how this works but it does)
