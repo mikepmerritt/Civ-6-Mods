@@ -14,13 +14,30 @@ local culturePlots = {};
 culturePlots[0] = {};
 culturePlots[1] = {};
 
+-- creating a table to hold library plots that need to be checked for properties --
+-- TODO: replace with code that reads the player count and generates from that --
+local sciencePlots = {};
+sciencePlots[0] = {};
+sciencePlots[1] = {};
+
 local function ApplyProperties()
+	-- culture checks --
 	for _, playerPlots in pairs(culturePlots) do
 		for _, plot in pairs(playerPlots) do
 			-- TODO: Bring back the conditional logic to check if the player is behind
 			if true then
 				print("Monument property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
+			end
+		end
+	end
+	-- science checks --
+	for _, playerPlots in pairs(sciencePlots) do
+		for _, plot in pairs(playerPlots) do
+			-- TODO: Bring back the conditional logic to check if the player is behind
+			if true then
+				print("Library property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+				plot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
 			end
 		end
 	end
@@ -52,6 +69,10 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 
 	if iConstructionType == 1 and unitID == 4 then
 		print("Library was created by player " .. playerID .. " in city " .. cityID);
+		local player = Players[playerID];
+		local city = player:GetCities():FindID(cityID);
+		local cityPlot = city:GetPlot();
+		sciencePlots[playerID][#sciencePlots[playerID] + 1] = cityPlot;
 	end
 end
 
