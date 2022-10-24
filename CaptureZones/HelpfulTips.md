@@ -1,4 +1,4 @@
-# Helpful Commands List
+# Helpful Tips List
 
 Below is some documentation on the various functions and objects that I used. Return types and arguments are described as well. I may not be entirely correct about everything here, but this simply documents my findings so they can be referenced later if necessary. If I missed anything, try looking through my code - I tried to comment what I was trying to do at each step anyways.
 
@@ -6,7 +6,13 @@ Below is some documentation on the various functions and objects that I used. Re
 
 Check out [this mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2776800137) for a better understanding of how to use the event listeners and what arguments they use. It lists out and has an example of all of them.
 
-## Objects
+## Resources
+
+To add a new resource type to the game, you should add new entries for your resource at least to the ```Types``` and ```Resources``` tables, but there are other ones which may also prove useful. Check out ```CaptureZoneResource.sql``` to see exactly what I changed to get mine to appear in game with the effects I wanted.
+
+When using ```Plot:GetResourceType()```, the integer returned is a reference to the entry in the Resources table. You can figure out what this number means by opening the DebugGameplay.sqlite file in SQLite, going to the ```Resources``` table, and subtracting one from the numbers of the rows, assuming that you have not reordered it. For example, bananas is row 1 in SQLite, so ```Plot:GetResourceType()``` on a plot with bananas would return 0.
+
+## Function Documentation
 
 ### Map
 * ```Map.GetPlot(x, y)``` - returns the Plot at x, y
@@ -18,7 +24,7 @@ Check out [this mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2776
 * ```Plot:IsMountain()``` - true if mountain, false otherwise
 * ```Plot:IsWater()``` - true if water, false otherwise
 * ```Plot:IsNaturalWonder()``` - true if natural wonder, false otherwise
-* ```Plot:GetResourceType()``` - returns resource type as integer (-1 if no resource)
+* ```Plot:GetResourceType()``` - returns resource type as integer, more details in Resources section (-1 if no resource)
 * ```Plot:GetDistrictType()``` - returns district type as integer (0 for city center, -1 for no district)
 * ```Plot:GetProperty(key)``` - returns the value stored with the string key on this Plot
 * ```Plot:SetProperty(key, value)``` - saves the value to the Plot, can be fetched later by using the key (type string) and GetProperty

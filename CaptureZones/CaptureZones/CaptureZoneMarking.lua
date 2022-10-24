@@ -187,7 +187,7 @@ local function Initialize()
 
 	-- debug
 	Events.TurnEnd.Add(PrintAllMarks)
-	-- Events.TurnEnd.Add(PrintCityTiles)
+	Events.TurnEnd.Add(PrintCityTiles)
 	-- Events.TurnEnd.Add(GenerateCaptureZones)
 end
 
