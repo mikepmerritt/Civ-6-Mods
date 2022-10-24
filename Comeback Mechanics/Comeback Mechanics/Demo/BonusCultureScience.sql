@@ -1,8 +1,8 @@
 -- Attempt 3 at creating comeback mechanics by adding new modifiers to science and culture buildings --
 
 -- New requirement sets and requirements --
-INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_SCIENCE_SAM', 'REQUIREMENT_MET', 0, 0, 0, 0, 1, 0);
-INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_CULTURE_SAM', 'REQUIREMENT_MET', 0, 0, 0, 0, 1, 0);
+INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_SCIENCE_SAM', 'REQUIREMENT_PLOT_PROPERTY_MATCHES', 0, 0, 0, 0, 1, 0);
+INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES ('REQUIRES_HAS_BEHIND_CULTURE_SAM', 'REQUIREMENT_PLOT_PROPERTY_MATCHES', 0, 0, 0, 0, 1, 0);
 
 INSERT INTO RequirementSets (RequirementSetId, RequirementSetType) VALUES ('PLAYER_FALLS_BEHIND_SCIENCE_SAM', 'REQUIREMENTSET_TEST_ALL');
 INSERT INTO RequirementSets (RequirementSetId, RequirementSetType) VALUES ('PLAYER_FALLS_BEHIND_CULTURE_SAM', 'REQUIREMENTSET_TEST_ALL');
