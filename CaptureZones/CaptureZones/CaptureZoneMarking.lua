@@ -1,12 +1,34 @@
+-- TODO: make it so that capture zones plots cannot have districts placed on them
+local function MarkPlot(plot)
+	plot:SetProperty("CAPTURE_SAM", true)
+end
+
+-- marks any tile with a capture zone and unmarks any cities that are marked but do not have a capture zone
+local function MarkCities()
+	for _, player in pairs(PlayerManager.GetAliveMajors()) do
+		for _, city in player:GetCities():Members() do
+			local marked = false
+			for _, plot in pairs(city:GetOwnedPlots()) do
+				if plot:GetProperty("CAPTURE_SAM") ~= nil then
+					marked = true
+				end
+			end
+			
+			if marked then
+				-- if there is a capture zone in a city mark the city
+				city:SetProperty("CAPTURE_SAM", true)
+			elseif city:GetProperty("CAPTURE_SAM") ~= nil then
+				-- if the city is marked but no longer has a capture zone unmark it
+				city:SetProperty("CAPTURE_SAM", nil)
+			end
+		end
+	end
+end
+
 -- picks a new set of plots and cities to mark as capture zones
 -- a capture zone plot must have no resources, no districts, no mountains, no natural wonders, or no wonders (so we can build on it later)
 -- a capture zone city must not already have a capture zone
-
--- TODO: make it so that capture zones plots cannot have districts placed on them
--- TODO: make a separate function to re-evaluate capture zone city markings, to handle transferring tiles, culture bombs, razing of cities, founding of new cities, etc
--- 		 essentially, call on turn start (or maybe a better event exists), search all cities, if marked tile inside mark city (1), else unmark city (nil)
 -- TODO: add parameters to differentiate between era behavior, if deemed necessary
--- TODO: figure out why the city isn't being fetched properly and fix it
 local function GenerateCaptureZones()
 	-- general function idea:
 	-- for each player
@@ -80,8 +102,7 @@ local function GenerateCaptureZones()
 				for _, plot in pairs(minCity:GetOwnedPlots()) do
 					if not markingFinished and plot:GetDistrictType() < 0 and plot:GetResourceType() < 0 and not plot:IsWater() and not plot:IsMountain() and not plot:IsNaturalWonder() then
 						-- if works, mark tile and exit
-						plot:SetProperty("CAPTURE_SAM", 1)
-						minCity:SetProperty("CAPTURE_SAM", 1)
+						MarkPlot(plot)
 						print("MARKING: Player " .. player:GetID() .. " had the tile (" .. plot:GetX() .. ", " .. plot:GetY() ..") marked successfully.")
 						markingFinished = true;
 					end
@@ -154,40 +175,9 @@ local function MarkPlotsOnEraChange(previousEra, newEra)
 	if newEra == 0 then
 		-- game start, used for debugging/testing
 
-	elseif newEra == 1 then
-		-- classical, use only for debugging
-
-		-- get all of the capitals
-		local capitalPlots:table = {}
-		for i=1, PlayerManager.GetAliveMajorsCount() do
-			local player = livingPlayers[i]
-			local cityList:table = player:GetCities()
-			local capital = cityList:GetCapitalCity()
-			local capitalPlot = capital:GetPlot()
-			capitalPlots[i] = capitalPlot
-		end
-
-		-- mark tiles over one x value from capitals
-		for i=1,PlayerManager.GetAliveMajorsCount() do
-			local plotToMark = Map.GetPlot(capitalPlots[i]:GetX()+1, capitalPlots[i]:GetY())
-			plotToMark:SetProperty("MARKED_SAM", 1)
-		end
-
-	elseif newEra == 2 then
-		-- medieval
-
+	elseif newEra >= 1 then
+		-- the game has reached classical era or later
 		GenerateCaptureZones()
-
-	elseif newEra == 4 then
-		-- industrial
-
-		GenerateCaptureZones()
-
-	elseif newEra == 6 then
-		-- atomic
-
-		GenerateCaptureZones()
-
 	end
 end
 
@@ -197,8 +187,8 @@ local function Initialize()
 
 	-- debug
 	Events.TurnEnd.Add(PrintAllMarks)
-	Events.TurnEnd.Add(PrintCityTiles)
-	Events.TurnEnd.Add(GenerateCaptureZones)
+	-- Events.TurnEnd.Add(PrintCityTiles)
+	-- Events.TurnEnd.Add(GenerateCaptureZones)
 end
 
 Initialize()
