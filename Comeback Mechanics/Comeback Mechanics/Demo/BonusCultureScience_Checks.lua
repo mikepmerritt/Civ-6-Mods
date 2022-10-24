@@ -10,15 +10,17 @@ end
 
 -- creating a table to hold monument plots that need to be checked for properties --
 -- TODO: replace with code that reads the player count and generates from that --
-local plots = {};
-plots[0] = {};
-plots[1] = {};
+local culturePlots = {};
+culturePlots[0] = {};
+culturePlots[1] = {};
 
-local function DetectProperty()
-	for _, playerPlots in pairs(plots) do
+local function ApplyProperties()
+	for _, playerPlots in pairs(culturePlots) do
 		for _, plot in pairs(playerPlots) do
-			if plot:GetProperty("SAM_ENABLE_MONUMENT_BONUS") == 1 then
+			-- TODO: Bring back the conditional logic to check if the player is behind
+			if true then
 				print("Monument property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
 			end
 		end
 	end
@@ -28,7 +30,7 @@ end
 -- cityID is the number for the city that triggered the event (65536 is capital) --
 -- iConstructionType is a number that identifies what was produced (0 is unit, 1 is building, 2 is district) --
 -- unitID is the number identifier for the produced item, depends on iConstructionType (0 is monument, 4 is library) --
--- bCancelled is not clear, mostly just false --
+-- bCancelled is not clear, mostly just false --culturePlots
 local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructionType, unitID, bCancelled)
 	-- print("Completed production") --
 	-- print("\tplayerID: " .. playerID); --
@@ -44,8 +46,8 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 		local player = Players[playerID];
 		local city = player:GetCities():FindID(cityID);
 		local cityPlot = city:GetPlot();
-		cityPlot:SetProperty("SAM_ENABLE_MONUMENT_BONUS", 1);
-		plots[playerID][#plots[playerID] + 1] = cityPlot;
+		-- cityPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
+		culturePlots[playerID][#culturePlots[playerID] + 1] = cityPlot;
 	end
 
 	if iConstructionType == 1 and unitID == 4 then
@@ -55,4 +57,4 @@ end
 
 -- Events.TurnBegin.Add(OutputAllRequirementTypes); --
 Events.CityProductionCompleted.Add(AssignPropertyOnBuildingCompletion);
-Events.TurnBegin.Add(DetectProperty);
+Events.TurnBegin.Add(ApplyProperties);
