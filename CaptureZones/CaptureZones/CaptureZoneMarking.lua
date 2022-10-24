@@ -1,6 +1,7 @@
 -- TODO: make it so that capture zones plots cannot have districts placed on them
 local function MarkPlot(plot)
 	plot:SetProperty("CAPTURE_SAM", true)
+	ResourceBuilder.SetResourceType(plot, 52, 1)
 end
 
 -- marks any tile with a capture zone and unmarks any cities that are marked but do not have a capture zone
@@ -185,10 +186,13 @@ local function Initialize()
 	-- plot marking
 	Events.GameEraChanged.Add(MarkPlotsOnEraChange)
 
+	-- city marking
+	Events.TurnEnd.Add(MarkCities)
+
 	-- debug
-	Events.TurnEnd.Add(PrintAllMarks)
-	Events.TurnEnd.Add(PrintCityTiles)
-	-- Events.TurnEnd.Add(GenerateCaptureZones)
+	-- Events.TurnEnd.Add(PrintAllMarks)
+	-- Events.TurnEnd.Add(PrintCityTiles)
+	Events.TurnEnd.Add(GenerateCaptureZones)
 end
 
 Initialize()
