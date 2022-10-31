@@ -9,21 +9,29 @@ local function OutputAllRequirementTypes()
 end
 
 -- creating a table to hold monument plots that need to be checked for properties --
--- TODO: replace with code that reads the player count and generates from that --
-local culturePlots = {};
-culturePlots[0] = {};
-culturePlots[1] = {};
-
 -- creating a table to hold library plots that need to be checked for properties --
--- TODO: replace with code that reads the player count and generates from that --
+local culturePlots = {};
 local sciencePlots = {};
-sciencePlots[0] = {};
-sciencePlots[1] = {};
+local playerList = PlayerManager.GetAliveMajors();
+for _, player in pairs(playerList) do
+	culturePlots[player:GetID()] = {};
+	sciencePlots[player:GetID()] = {};
+end
+
+print("Number of culture tables: " .. #culturePlots);
+print("Number of science tables: " .. #sciencePlots);
 
 local function ApplyProperties()
 	-- culture checks --
-	for _, playerPlots in pairs(culturePlots) do
+	for playerIndex, playerPlots in pairs(culturePlots) do
 		for _, plot in pairs(playerPlots) do
+			print("Player Index: " .. playerIndex);
+			-- fetching other players' culture
+			for otherPlayerIndex, _ in pairs(culturePlots) do
+				if playerIndex ~= otherPlayerIndex then
+					print("Player " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetCulture():GetCultureYield());
+				end
+			end
 			-- TODO: Bring back the conditional logic to check if the player is behind
 			if true then
 				print("Monument property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
