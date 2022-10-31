@@ -140,3 +140,22 @@ This approach will involve setting up empty requirements and requirement sets th
 	- Item 2:
 		- BuildingType: 'BUILDING_MONUMENT'
 		- ModifierId: 'DOUBLE_CULTURE_YIELD_SAM'
+		
+### Result - FAILURE
+We were unable to find a function in the LUA scripting library that would allow us to change the status for a requirement. As such, it is impossible to activate the modifiers.
+We are looking back into using the requirements system and working with existing requirement types and arguments to make this happen.
+
+## Comeback mechanic implementation 3
+We found that it was not possible to manually set the status of requirements, meaning that we would need to work with the existing requirement system and checks to activate our modifiers.
+The modifiers have been changed to add 1 to the buildings yields, to prevent the effect from stacking.
+
+We want to attempt to attach a property to something in the game, and use the existing requirements to check if the propery is in the game.
+
+### Exploration
+I found that there is only one requirement type present in the game for checking if properties match: 'REQUIREMENT_PLOT_PROPERTY_MATCHES'
+
+Using a spreadsheet with all the existing requirements and their arguments, available at https://docs.google.com/spreadsheets/d/1hQ8zlEHl1nfjCWvKqOlkDACezu5-igfQkVcOxeE_KG0/edit#gid=265388871, I realized that there were no examples in the base game that used this requirement type.
+Comments in the spreadsheet directed me to another mod that used this property, available at https://steamcommunity.com/workshop/filedetails/?id=2104384400. 
+
+Currently, the plan is to create a unqiue property that is added to the city center whenever the player completes building a monument/library.
+I will also need to create a new requirement, with arguments, using the requirement type 'REQUIREMENT_PLOT_PROPERTY_MATCHES'. 
