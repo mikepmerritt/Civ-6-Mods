@@ -54,7 +54,7 @@ local function GenerateCaptureZones()
 						-- save min distance along with player city
 						local distance = Map.GetPlotDistance(pCity:GetPlot():GetX(), pCity:GetPlot():GetY(), eCity:GetPlot():GetX(), eCity:GetPlot():GetY())
 						local position = pCity:GetPlot():GetX() .. " " .. pCity:GetPlot():GetY()
-						if cityMinDistancesToEnemy[position] == nil or cityMinDistancesToEnemy[pCity:GetID()] > distance then
+						if cityMinDistancesToEnemy[position] == nil or cityMinDistancesToEnemy[position] > distance then
 							cityMinDistancesToEnemy[position] = distance;
 						end
 					end
