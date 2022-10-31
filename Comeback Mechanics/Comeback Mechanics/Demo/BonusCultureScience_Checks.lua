@@ -79,24 +79,25 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	-- print("\tunitID: " .. unitID); --
 	-- print("\tbCancelled: " .. tostring(bCancelled)); --
 
-	-- TODO: ignore minor powers to fix some errors
-	if iConstructionType == 1 and unitID == 0 then
-		print("Monument was created by player " .. playerID .. " in city " .. cityID);
-		-- local cityPlot = CityManager.GetCity(cityID):GetPlot();
-		-- local living_players = PlayerManager.GetAliveMajors();
-		local player = Players[playerID];
-		local city = player:GetCities():FindID(cityID);
-		local cityPlot = city:GetPlot();
-		-- cityPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
-		culturePlots[playerID][#culturePlots[playerID] + 1] = cityPlot;
-	end
+	if Players[playerID]:IsMajor() then
+		if iConstructionType == 1 and unitID == 0 then
+			print("Monument was created by player " .. playerID .. " in city " .. cityID);
+			-- local cityPlot = CityManager.GetCity(cityID):GetPlot();
+			-- local living_players = PlayerManager.GetAliveMajors();
+			local player = Players[playerID];
+			local city = player:GetCities():FindID(cityID);
+			local cityPlot = city:GetPlot();
+			-- cityPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
+			culturePlots[playerID][#culturePlots[playerID] + 1] = cityPlot;
+		end
 
-	if iConstructionType == 1 and unitID == 4 then
-		print("Library was created by player " .. playerID .. " in city " .. cityID);
-		local player = Players[playerID];
-		local city = player:GetCities():FindID(cityID);
-		local cityPlot = city:GetPlot();
-		sciencePlots[playerID][#sciencePlots[playerID] + 1] = cityPlot;
+		if iConstructionType == 1 and unitID == 4 then
+			print("Library was created by player " .. playerID .. " in city " .. cityID);
+			local player = Players[playerID];
+			local city = player:GetCities():FindID(cityID);
+			local cityPlot = city:GetPlot();
+			sciencePlots[playerID][#sciencePlots[playerID] + 1] = cityPlot;
+		end
 	end
 end
 
