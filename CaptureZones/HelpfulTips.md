@@ -2,6 +2,15 @@
 
 Below is some documentation on the various functions and objects that I used. Return types and arguments are described as well. I may not be entirely correct about everything here, but this simply documents my findings so they can be referenced later if necessary. If I missed anything, try looking through my code - I tried to comment what I was trying to do at each step anyways.
 
+## File Locations
+
+Here are some files and folders that I ended up using, and you might need too.
+
+* A copy of the game's databases is under ```.../Documents/My Games/Sid Meier's Civilization VI/Cache```. This is where you can see everything that was in the database from your last playthrough.
+* The database log is at ```.../Documents/My Games/Sid Meier's Civilization VI/Logs/Database.log```. This is where you can check for database-related errors.
+* The icons are under ```.../steamapps/common/Sid Meier's Civilization VI/Base/Assets/UI/Icons```. This is useful if you want to reuse one.
+* The FireTuner panels are under ```.../steamapps/common/Sid Meier's Civilization VI/Debug```. Open these from FireTuner for easier testing and debugging.
+
 ## Event Listeners
 
 Check out [this mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2776800137) for a better understanding of how to use the event listeners and what arguments they use. It lists out and has an example of all of them.
