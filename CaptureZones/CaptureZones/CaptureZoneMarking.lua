@@ -1,6 +1,7 @@
 -- TODO: make it so that capture zones plots cannot have districts placed on them
 local function MarkPlot(plot)
 	plot:SetProperty("CAPTURE_SAM", true)
+	plot:SetProperty("ORIGINAL_OWNER_SAM", plot:GetOwner())
 	ResourceBuilder.SetResourceType(plot, 52, 1)
 end
 
@@ -119,12 +120,14 @@ end
 -- debug function, outputs a list of all marked tiles as ordered pairs
 local function PrintAllMarks()
 	local mapWidth, mapHeight = Map.GetGridSize()
-	print("Width: " .. mapWidth)
-	print("Height: " .. mapHeight)
+	-- print("Width: " .. mapWidth)
+	-- print("Height: " .. mapHeight)
 
 	local allPlots:table = {}
 	local markedPlots:table = {}
 	local markedPlotsOutput = ""
+
+	print("Marked plots: ")
 
 	for x=1,mapWidth do
 		for y=1,mapHeight do
@@ -133,12 +136,12 @@ local function PrintAllMarks()
 			allPlots[id] = currPlot
 			if currPlot ~= nil and currPlot:GetProperty("CAPTURE_SAM") ~= nil then
 				markedPlots[id] = Map.GetPlot(x, y)
-				markedPlotsOutput = markedPlotsOutput .. id .. " "
+				originalOwner = currPlot:GetProperty("ORIGINAL_OWNER_SAM")
+				-- markedPlotsOutput = markedPlotsOutput .. id .. " "
+				print(id .. ", original owner: " .. originalOwner)
 			end
 		end
 	end
-
-	print("Marked plots: " .. markedPlotsOutput)
 end
 
 -- debug function, prints out all plots in a city and some important information
@@ -190,7 +193,7 @@ local function Initialize()
 	Events.TurnEnd.Add(MarkCities)
 
 	-- debug
-	-- Events.TurnEnd.Add(PrintAllMarks)
+	Events.TurnEnd.Add(PrintAllMarks)
 	-- Events.TurnEnd.Add(PrintCityTiles)
 	Events.TurnEnd.Add(GenerateCaptureZones)
 end
