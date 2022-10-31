@@ -9,35 +9,73 @@ local function OutputAllRequirementTypes()
 end
 
 -- creating a table to hold monument plots that need to be checked for properties --
--- TODO: replace with code that reads the player count and generates from that --
-local culturePlots = {};
-culturePlots[0] = {};
-culturePlots[1] = {};
-
 -- creating a table to hold library plots that need to be checked for properties --
--- TODO: replace with code that reads the player count and generates from that --
+
+-- TODO: fix potential bugs that could come from capturing cities with monuments and libraries
+-- TODO: check for bugs with buildings being destroyed
+local culturePlots = {};
 local sciencePlots = {};
-sciencePlots[0] = {};
-sciencePlots[1] = {};
+local playerList = PlayerManager.GetAliveMajors();
+for _, player in pairs(playerList) do
+	culturePlots[player:GetID()] = {};
+	sciencePlots[player:GetID()] = {};
+end
+
+-- TODO: change these values to be based on actual gameplay
+local cultureThreshold = 3;
+local scienceThreshold = 3;
+
+-- print("Number of culture tables: " .. #culturePlots);
+-- print("Number of science tables: " .. #sciencePlots);
 
 local function ApplyProperties()
 	-- culture checks --
-	for _, playerPlots in pairs(culturePlots) do
+	for playerIndex, playerPlots in pairs(culturePlots) do
 		for _, plot in pairs(playerPlots) do
-			-- TODO: Bring back the conditional logic to check if the player is behind
-			if true then
-				print("Monument property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+			print("Player Index: " .. playerIndex);
+			-- fetching other players' culture and calculating an average
+			local averageCulture = 0;
+			local playerCount = 0;
+			for otherPlayerIndex, _ in pairs(culturePlots) do
+				if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
+					averageCulture = averageCulture + Players[otherPlayerIndex]:GetCulture():GetCultureYield();
+					playerCount = playerCount + 1;
+					print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetCulture():GetCultureYield());
+				end
+			end
+			averageCulture = averageCulture / playerCount;
+			print("\tAverage Culture of Opponents: " .. averageCulture);
+			if Players[playerIndex]:IsAlive() and Players[playerIndex]:GetCulture():GetCultureYield() < averageCulture - cultureThreshold then
+				print("Monument property applied at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
+			else
+				print("Monument property removed at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 0);
 			end
 		end
 	end
 	-- science checks --
-	for _, playerPlots in pairs(sciencePlots) do
+	for playerIndex, playerPlots in pairs(sciencePlots) do
 		for _, plot in pairs(playerPlots) do
-			-- TODO: Bring back the conditional logic to check if the player is behind
-			if true then
-				print("Library property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+			print("Player Index: " .. playerIndex);
+			-- fetching other players' science and calculating an average
+			local averageScience = 0;
+			local playerCount = 0;
+			for otherPlayerIndex, _ in pairs(sciencePlots) do
+				if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
+					averageScience = averageScience + Players[otherPlayerIndex]:GetTechs():GetScienceYield();
+					playerCount = playerCount + 1;
+					print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetTechs():GetScienceYield());
+				end
+			end
+			averageScience = averageScience / playerCount;
+			print("\tAverage Science of Opponents: " .. averageScience);
+			if Players[playerIndex]:IsAlive() and Players[playerIndex]:GetTechs():GetScienceYield() < averageScience - scienceThreshold then
+				print("Library property applied at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
+			else
+				print("Library property removed at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+				plot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 0);
 			end
 		end
 	end
@@ -56,23 +94,38 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	-- print("\tunitID: " .. unitID); --
 	-- print("\tbCancelled: " .. tostring(bCancelled)); --
 
-	if iConstructionType == 1 and unitID == 0 then
-		print("Monument was created by player " .. playerID .. " in city " .. cityID);
-		-- local cityPlot = CityManager.GetCity(cityID):GetPlot();
-		-- local living_players = PlayerManager.GetAliveMajors();
-		local player = Players[playerID];
-		local city = player:GetCities():FindID(cityID);
-		local cityPlot = city:GetPlot();
-		-- cityPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
-		culturePlots[playerID][#culturePlots[playerID] + 1] = cityPlot;
-	end
-
-	if iConstructionType == 1 and unitID == 4 then
-		print("Library was created by player " .. playerID .. " in city " .. cityID);
-		local player = Players[playerID];
-		local city = player:GetCities():FindID(cityID);
-		local cityPlot = city:GetPlot();
-		sciencePlots[playerID][#sciencePlots[playerID] + 1] = cityPlot;
+	if Players[playerID]:IsMajor() then
+		-- monument
+		if iConstructionType == 1 and unitID == 0 then
+			print("Monument was created by player " .. playerID .. " in city " .. cityID);
+			-- local cityPlot = CityManager.GetCity(cityID):GetPlot();
+			-- local living_players = PlayerManager.GetAliveMajors();
+			local player = Players[playerID];
+			local city = player:GetCities():FindID(cityID);
+			local cityPlot = city:GetPlot();
+			-- cityPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
+			culturePlots[playerID][#culturePlots[playerID] + 1] = cityPlot;
+		end
+		-- library
+		if iConstructionType == 1 and unitID == 4 then
+			print("Library was created by player " .. playerID .. " in city " .. cityID);
+			local player = Players[playerID];
+			local city = player:GetCities():FindID(cityID);
+			local cityDistricts = city:GetDistricts();
+			
+			-- code inspired by code from City.ltp
+			for district in GameInfo.Districts() do
+				if cityDistricts:HasDistrict(district.Index) then
+					-- TODO: add special science districts into this somehow
+					if district.DistrictType == "DISTRICT_CAMPUS" then
+						local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
+						local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
+						sciencePlots[playerID][#sciencePlots[playerID] + 1] = districtPlot;
+						break;
+					end
+				end
+			end
+		end
 	end
 end
 
