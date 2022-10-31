@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>CaptureZones</AssemblyName>
     <RootNamespace>CaptureZones</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddVPImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -30,6 +30,9 @@
     <None Include="CaptureZones.Art.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CaptureZoneImprovements.sql">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="CaptureZoneMarking.lua">
       <SubType>Content</SubType>
     </Content>
