@@ -55,12 +55,27 @@ local function ApplyProperties()
 		end
 	end
 	-- science checks --
-	for _, playerPlots in pairs(sciencePlots) do
+	for playerIndex, playerPlots in pairs(sciencePlots) do
 		for _, plot in pairs(playerPlots) do
-			-- TODO: Bring back the conditional logic to check if the player is behind
-			if true then
-				print("Library property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+			print("Player Index: " .. playerIndex);
+			-- fetching other players' science and calculating an average
+			local averageScience = 0;
+			local playerCount = 0;
+			for otherPlayerIndex, _ in pairs(sciencePlots) do
+				if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
+					averageScience = averageScience + Players[otherPlayerIndex]:GetTechs():GetScienceYield();
+					playerCount = playerCount + 1;
+					print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetTechs():GetScienceYield());
+				end
+			end
+			averageScience = averageScience / playerCount;
+			print("\tAverage Science of Opponents: " .. averageScience);
+			if Players[playerIndex]:IsAlive() and Players[playerIndex]:GetTechs():GetScienceYield() < averageScience - scienceThreshold then
+				print("Library property applied at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
+			else
+				print("Library property removed at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+				plot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 0);
 			end
 		end
 	end
@@ -101,6 +116,7 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 			-- code inspired by code from City.ltp
 			for district in GameInfo.Districts() do
 				if cityDistricts:HasDistrict(district.Index) then
+					-- TODO: add special science districts into this somehow
 					if district.DistrictType == "DISTRICT_CAMPUS" then
 						local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
 						local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
