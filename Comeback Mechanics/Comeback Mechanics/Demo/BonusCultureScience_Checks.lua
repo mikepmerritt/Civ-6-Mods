@@ -80,6 +80,7 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	-- print("\tbCancelled: " .. tostring(bCancelled)); --
 
 	if Players[playerID]:IsMajor() then
+		-- monument
 		if iConstructionType == 1 and unitID == 0 then
 			print("Monument was created by player " .. playerID .. " in city " .. cityID);
 			-- local cityPlot = CityManager.GetCity(cityID):GetPlot();
@@ -90,13 +91,24 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 			-- cityPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
 			culturePlots[playerID][#culturePlots[playerID] + 1] = cityPlot;
 		end
-
+		-- library
 		if iConstructionType == 1 and unitID == 4 then
 			print("Library was created by player " .. playerID .. " in city " .. cityID);
 			local player = Players[playerID];
 			local city = player:GetCities():FindID(cityID);
-			local cityPlot = city:GetPlot();
-			sciencePlots[playerID][#sciencePlots[playerID] + 1] = cityPlot;
+			local cityDistricts = city:GetDistricts();
+			
+			-- code inspired by code from City.ltp
+			for district in GameInfo.Districts() do
+				if cityDistricts:HasDistrict(district.Index) then
+					if district.DistrictType == "DISTRICT_CAMPUS" then
+						local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
+						local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
+						sciencePlots[playerID][#sciencePlots[playerID] + 1] = districtPlot;
+						break;
+					end
+				end
+			end
 		end
 	end
 end
