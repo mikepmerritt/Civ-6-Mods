@@ -10,6 +10,9 @@ end
 
 -- creating a table to hold monument plots that need to be checked for properties --
 -- creating a table to hold library plots that need to be checked for properties --
+
+-- TODO: fix potential bugs that could come from capturing cities with monuments and libraries
+-- TODO: check for bugs with buildings being destroyed
 local culturePlots = {};
 local sciencePlots = {};
 local playerList = PlayerManager.GetAliveMajors();
@@ -18,24 +21,36 @@ for _, player in pairs(playerList) do
 	sciencePlots[player:GetID()] = {};
 end
 
-print("Number of culture tables: " .. #culturePlots);
-print("Number of science tables: " .. #sciencePlots);
+-- TODO: change these values to be based on actual gameplay
+local cultureThreshold = 3;
+local scienceThreshold = 3;
+
+-- print("Number of culture tables: " .. #culturePlots);
+-- print("Number of science tables: " .. #sciencePlots);
 
 local function ApplyProperties()
 	-- culture checks --
 	for playerIndex, playerPlots in pairs(culturePlots) do
 		for _, plot in pairs(playerPlots) do
 			print("Player Index: " .. playerIndex);
-			-- fetching other players' culture
+			-- fetching other players' culture and calculating an average
+			local averageCulture = 0;
+			local playerCount = 0;
 			for otherPlayerIndex, _ in pairs(culturePlots) do
-				if playerIndex ~= otherPlayerIndex then
-					print("Player " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetCulture():GetCultureYield());
+				if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
+					averageCulture = averageCulture + Players[otherPlayerIndex]:GetCulture():GetCultureYield();
+					playerCount = playerCount + 1;
+					print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetCulture():GetCultureYield());
 				end
 			end
-			-- TODO: Bring back the conditional logic to check if the player is behind
-			if true then
-				print("Monument property found at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+			averageCulture = averageCulture / playerCount;
+			print("\tAverage Culture of Opponents: " .. averageCulture);
+			if Players[playerIndex]:IsAlive() and Players[playerIndex]:GetCulture():GetCultureYield() < averageCulture - cultureThreshold then
+				print("Monument property applied at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
+			else
+				print("Monument property removed at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
+				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 0);
 			end
 		end
 	end
@@ -64,6 +79,7 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	-- print("\tunitID: " .. unitID); --
 	-- print("\tbCancelled: " .. tostring(bCancelled)); --
 
+	-- TODO: ignore minor powers to fix some errors
 	if iConstructionType == 1 and unitID == 0 then
 		print("Monument was created by player " .. playerID .. " in city " .. cityID);
 		-- local cityPlot = CityManager.GetCity(cityID):GetPlot();
