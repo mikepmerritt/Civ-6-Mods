@@ -1,3 +1,8 @@
+-- Create all necessary table insertions for tile improvements
+-- The science one uses the seastead as a placeholder icon
+-- The culture one uses the polder as a placeholder icon
+-- The production one uses the feitoria as a placeholder icon
+
 INSERT INTO Types (Type, Kind) VALUES 
 ('IMPROVEMENT_SCIENCE_CENTER_SAM', 'KIND_IMPROVEMENT'),
 ('IMPROVEMENT_CULTURE_CENTER_SAM', 'KIND_IMPROVEMENT'),
