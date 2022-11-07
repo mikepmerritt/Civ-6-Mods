@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>CaptureZones</AssemblyName>
     <RootNamespace>CaptureZones</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase><AddGameplayScripts id="AddVictoryHelper"><File>CaptureZoneVictory.lua</File></AddGameplayScripts><UpdateText id="AddVictoryText"><File>CaptureZoneVictoryText.sql</File></UpdateText><UpdateIcons id="AddVictoryIcons"><File>CaptureZoneVictoryIcons.sql</File></UpdateIcons></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -49,6 +49,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="CaptureZoneVictory.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CaptureZoneVictoryIcons.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CaptureZoneVictoryText.sql">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

@@ -178,9 +178,14 @@ local function MarkPlotsOnEraChange(previousEra, newEra)
 
 	if newEra == 0 then
 		-- game start, used for debugging/testing
-
-	elseif newEra >= 1 then
-		-- the game has reached classical era or later
+	elseif newEra == 2 then
+		-- the game has reached medieval era
+		GenerateCaptureZones()
+	elseif newEra == 4 then
+		-- the game has reached industrial era
+		GenerateCaptureZones()
+	elseif newEra == 6 then
+		-- the game has reached modern era
 		GenerateCaptureZones()
 	end
 end
@@ -193,9 +198,9 @@ local function Initialize()
 	Events.TurnEnd.Add(MarkCities)
 
 	-- debug
-	Events.TurnEnd.Add(PrintAllMarks)
+	-- Events.TurnEnd.Add(PrintAllMarks)
 	-- Events.TurnEnd.Add(PrintCityTiles)
-	Events.TurnEnd.Add(GenerateCaptureZones)
+	-- Events.TurnEnd.Add(GenerateCaptureZones)
 end
 
 Initialize()
