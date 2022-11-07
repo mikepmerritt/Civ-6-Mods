@@ -8,6 +8,9 @@ local function OutputAllRequirementTypes()
 	end
 end
 
+-- NOTE: add special science districts into this
+scienceDistricts = {["DISTRICT_CAMPUS"] = true, ["DISTRICT_OBSERVATORY"] = true, ["DISTRICT_SEOWON"] = true}
+
 -- creating a table to hold monument plots that need to be checked for properties --
 -- creating a table to hold library plots that need to be checked for properties --
 
@@ -116,8 +119,7 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 			-- code inspired by code from City.ltp
 			for district in GameInfo.Districts() do
 				if cityDistricts:HasDistrict(district.Index) then
-					-- TODO: add special science districts into this somehow
-					if district.DistrictType == "DISTRICT_CAMPUS" then
+					if scienceDistricts[district.DistrictType] ~= nil then
 						local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
 						local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
 						sciencePlots[playerID][#sciencePlots[playerID] + 1] = districtPlot;
