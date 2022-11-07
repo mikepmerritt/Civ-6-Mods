@@ -48,9 +48,6 @@
     <Content Include="CaptureZoneResourceText.sql">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="CaptureZoneVictory.lua">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="CaptureZoneVictory.sql">
       <SubType>Content</SubType>
     </Content>

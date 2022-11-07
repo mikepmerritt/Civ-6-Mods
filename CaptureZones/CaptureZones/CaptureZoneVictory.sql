@@ -1,4 +1,5 @@
 -- Capture zone project
+-- TODO: figure out why the victory panel crashed
 
 INSERT INTO Types (Type, Kind) VALUES
 ('PROJECT_SHOW_SUPERIORITY_SAM', 'KIND_PROJECT'),

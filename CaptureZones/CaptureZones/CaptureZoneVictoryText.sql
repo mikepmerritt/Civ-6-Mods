@@ -1,4 +1,5 @@
 -- all text for the victory
+-- TODO: fix the blurb - it is actually the text that comes up when you win the game
 
 INSERT INTO LocalizedText (Language, Tag, Text) VALUES
 ('en_US', 'LOC_PROJECT_SHOW_SUPERIORITY_SAM_NAME', 'Show Superiority'),
