@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>CaptureZones</AssemblyName>
     <RootNamespace>CaptureZones</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -46,6 +46,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="CaptureZoneResourceText.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="CaptureZoneVictory.sql">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
