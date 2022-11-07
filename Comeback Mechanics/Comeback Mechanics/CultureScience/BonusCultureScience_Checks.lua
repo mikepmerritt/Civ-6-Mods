@@ -131,16 +131,64 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	end
 end
 
-local function SwapBuildingOwner(newPlayerID, oldPlayerID, newCityID, iCityX, iCityY)
-	print("City changed hands!")
-	print("\tNew Player ID: " .. newPlayerID);
-	print("\tOld Player ID: " .. oldPlayerID);
-	print("\tNew City ID: " .. newCityID);
-	print("\tCity X: " .. iCityX);
-	print("\tCity Y: " .. iCityY);
+local function OnCityAdded(playerID, cityID, plotX, plotY)
+	print("City added!")
+	print("\tPlayer ID: " .. playerID);
+	print("\tCity ID: " .. cityID);
+	print("\tX: " .. plotX);
+	print("\tY: " .. plotY);
+end
+
+-- no clue what the parameters after districtType and before percentComplete represent
+-- but I need to value after it, so they are skipped
+local function OnDistrictAdded(playerID, districtID, cityID, plotX, plotY, districtType, _, _, percentComplete)
+	print("District added!")
+	print("\tPlayer ID: " .. playerID);
+	print("\tDistrict ID: " .. districtID);
+	print("\tCity ID: " .. cityID);
+	print("\tX: " .. plotX);
+	print("\tY: " .. plotY);
+	print("\tDistrict Type: " .. districtType);
+	print("\tPercent Complete: " .. percentComplete);
+end
+
+local function OnCityRemoved(playerID, cityID)
+	print("City removed!")
+	print("\tPlayer ID: " .. playerID);
+	print("\tCity ID: " .. cityID);
+end
+
+local function OnDistrictRemoved(playerID, districtID, cityID, plotX, plotY, districtType)
+	print("District removed!")
+	print("\tPlayer ID: " .. playerID);
+	print("\tDistrict ID: " .. districtID);
+	print("\tCity ID: " .. cityID);
+	print("\tX: " .. plotX);
+	print("\tY: " .. plotY);
+	print("\tDistrict Type: " .. districtType);
+end
+
+-- function used to for testing purposes to determine how many arguments a callback gives
+local function PrintAllArgValues(string, ...)
+	args = {...};
+	print("FUNCTION: " .. string)
+	for index, val in pairs(args) do
+		print("\t" .. index .. ": " .. val);
+	end
 end
 
 -- Events.TurnBegin.Add(OutputAllRequirementTypes);
 Events.CityProductionCompleted.Add(AssignPropertyOnBuildingCompletion);
 Events.TurnBegin.Add(ApplyProperties);
-GameEvents.CityConquered.Add(SwapBuildingOwner);
+
+-- City changing hands
+Events.CityAddedToMap.Add(OnCityAdded);
+Events.DistrictAddedToMap.Add(OnDistrictAdded);
+Events.CityRemovedFromMap.Add(OnCityRemoved);
+Events.DistrictRemovedFromMap.Add(OnDistrictRemoved);
+
+-- testing the output args of various callbacks
+-- Events.CityAddedToMap.Add(function(...) PrintAllArgValues("City Add", ...) end);
+-- Events.CityRemovedFromMap.Add(function(...) PrintAllArgValues("City Remove", ...) end);
+-- Events.DistrictAddedToMap.Add(function(...) PrintAllArgValues("District Add", ...) end);
+-- Events.DistrictRemovedFromMap.Add(function(...) PrintAllArgValues("District Remove", ...) end);
