@@ -34,20 +34,20 @@ local scienceThreshold = 3;
 local function ApplyProperties()
 	-- culture checks --
 	for playerIndex, playerPlots in pairs(culturePlots) do
-		for _, plot in pairs(playerPlots) do
-			print("Player Index: " .. playerIndex);
-			-- fetching other players' culture and calculating an average
-			local averageCulture = 0;
-			local playerCount = 0;
-			for otherPlayerIndex, _ in pairs(culturePlots) do
-				if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
-					averageCulture = averageCulture + Players[otherPlayerIndex]:GetCulture():GetCultureYield();
-					playerCount = playerCount + 1;
-					print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetCulture():GetCultureYield());
-				end
+		print("Player Index: " .. playerIndex);
+		-- fetching other players' culture and calculating an average
+		local averageCulture = 0;
+		local playerCount = 0;
+		for otherPlayerIndex, _ in pairs(culturePlots) do
+			if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
+				averageCulture = averageCulture + Players[otherPlayerIndex]:GetCulture():GetCultureYield();
+				playerCount = playerCount + 1;
+				print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetCulture():GetCultureYield());
 			end
-			averageCulture = averageCulture / playerCount;
-			print("\tAverage Culture of Opponents: " .. averageCulture);
+		end
+		averageCulture = averageCulture / playerCount;
+		print("\tAverage Culture of Opponents: " .. averageCulture);
+		for _, plot in pairs(playerPlots) do
 			if Players[playerIndex]:IsAlive() and Players[playerIndex]:GetCulture():GetCultureYield() < averageCulture - cultureThreshold then
 				print("Monument property applied at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
@@ -59,20 +59,20 @@ local function ApplyProperties()
 	end
 	-- science checks --
 	for playerIndex, playerPlots in pairs(sciencePlots) do
-		for _, plot in pairs(playerPlots) do
-			print("Player Index: " .. playerIndex);
-			-- fetching other players' science and calculating an average
-			local averageScience = 0;
-			local playerCount = 0;
-			for otherPlayerIndex, _ in pairs(sciencePlots) do
-				if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
-					averageScience = averageScience + Players[otherPlayerIndex]:GetTechs():GetScienceYield();
-					playerCount = playerCount + 1;
-					print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetTechs():GetScienceYield());
-				end
+		print("Player Index: " .. playerIndex);
+		-- fetching other players' science and calculating an average
+		local averageScience = 0;
+		local playerCount = 0;
+		for otherPlayerIndex, _ in pairs(sciencePlots) do
+			if playerIndex ~= otherPlayerIndex and Players[otherPlayerIndex]:IsAlive() then
+				averageScience = averageScience + Players[otherPlayerIndex]:GetTechs():GetScienceYield();
+				playerCount = playerCount + 1;
+				print("\tPlayer " .. otherPlayerIndex .. " Science: " .. Players[otherPlayerIndex]:GetTechs():GetScienceYield());
 			end
-			averageScience = averageScience / playerCount;
-			print("\tAverage Science of Opponents: " .. averageScience);
+		end
+		averageScience = averageScience / playerCount;
+		print("\tAverage Science of Opponents: " .. averageScience);
+		for _, plot in pairs(playerPlots) do
 			if Players[playerIndex]:IsAlive() and Players[playerIndex]:GetTechs():GetScienceYield() < averageScience - scienceThreshold then
 				print("Library property applied at (" .. plot:GetX() .. ", " .. plot:GetY() .. ")");
 				plot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
@@ -131,6 +131,16 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	end
 end
 
--- Events.TurnBegin.Add(OutputAllRequirementTypes); --
+local function SwapBuildingOwner(newPlayerID, oldPlayerID, newCityID, iCityX, iCityY)
+	print("City changed hands!")
+	print("\tNew Player ID: " .. newPlayerID);
+	print("\tOld Player ID: " .. oldPlayerID);
+	print("\tNew City ID: " .. newCityID);
+	print("\tCity X: " .. iCityX);
+	print("\tCity Y: " .. iCityY);
+end
+
+-- Events.TurnBegin.Add(OutputAllRequirementTypes);
 Events.CityProductionCompleted.Add(AssignPropertyOnBuildingCompletion);
 Events.TurnBegin.Add(ApplyProperties);
+GameEvents.CityConquered.Add(SwapBuildingOwner);
