@@ -15,3 +15,6 @@ INSERT INTO Resource_YieldChanges (ResourceType, YieldType, YieldChange) VALUES
 ('RESOURCE_VICTORY_POINTS_SAM', 'YIELD_PRODUCTION', 2),
 ('RESOURCE_VICTORY_POINTS_SAM', 'YIELD_SCIENCE', 2),
 ('RESOURCE_VICTORY_POINTS_SAM', 'YIELD_CULTURE', 2);
+
+-- INSERT INTO Resource_Consumption (ResourceType, Accumulate, BaseExtractionRate, ImprovedExtractionRate, StockpileCap) VALUES
+-- ('RESOURCE_VICTORY_POINTS_SAM', 1, 1, 2, 1000);
