@@ -1,0 +1,3 @@
+INSERT INTO LocalizedText (Language, Tag, Text) VALUES
+('en_US', 'LOC_VICTORY_CAPTURE_SAM_NAME', 'Control Victory'),
+('en_US', 'LOC_VICTORY_CAPTURE_SAM_TT', 'Prove that your civilization is the greatest by completing the Show Strength and Exert Influence projects in the Government Plaza using Victory Points! You can gain Victory Points by controlling the key areas they are placed on later in the game.');
