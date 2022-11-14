@@ -71,7 +71,6 @@ local function GenerateCaptureZones()
 
 			-- find city with minimum distance from enemy
 			for location, distance in pairs(cityMinDistancesToEnemy) do
-				print("SEARCHING: City at [" .. location .. "] is " .. distance .. " distance away from the nearest enemy city")
 				if distance < minDistance then
 					minLocation = location
 					minDistance = distance
@@ -85,7 +84,7 @@ local function GenerateCaptureZones()
 			-- end
 
 			-- if no city was found (the for loop didn't run because all cities were eliminated as options) exit without marking and print that for error tracking
-			if minLocation == nil and minDistance < 0 then
+			if minLocation == nil and minDistance == 1000000 then
 				print("MARKING: Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
 				markingFinished = true
 			else
@@ -201,7 +200,7 @@ local function Initialize()
 	-- debug
 	-- Events.TurnEnd.Add(PrintAllMarks)
 	-- Events.TurnEnd.Add(PrintCityTiles)
-	Events.TurnEnd.Add(GenerateCaptureZones)
+	-- Events.TurnEnd.Add(GenerateCaptureZones)
 end
 
 Initialize()
