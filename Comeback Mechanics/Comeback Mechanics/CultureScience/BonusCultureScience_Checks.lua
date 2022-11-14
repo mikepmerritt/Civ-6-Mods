@@ -21,9 +21,18 @@ for _, player in pairs(playerList) do
 	playerPlots[player:GetID()] = {};
 end
 
+-- tables to track progress in the tech and civics trees
+local techProgress = {};
+local civicsProgress = {};
+local majorPlayerList = PlayerManager.GetAlive();
+for _, player in pairs(majorPlayerList) do
+	techProgress[player:GetID()] = 0;
+	civicsProgress[player:GetID()] = 0;
+end
+
 -- TODO: change these values to be based on actual gameplay
-local cultureThreshold = 3;
-local scienceThreshold = 3;
+local techThreshold = 4;
+local civicsThreshold = 4;
 
 local function ApplyProperties()
 	-- step through each plot in modifierPlots
@@ -52,25 +61,27 @@ local function ApplyProperties()
 				print("\tOwner ID: " .. ownerID);
 				local majors = PlayerManager.GetAliveMajors();
 				-- fetching other players' cultures and sciences, and calculating averages
-				local averageCulture = 0;
-				local averageScience = 0;
+				local averageTechs = 0;
+				local averageCivics = 0;
 				local playerCount = 0;
 				for _, otherPlayer in pairs(majors) do
 					if ownerID ~= otherPlayer:GetID() then
-						averageCulture = averageCulture + otherPlayer:GetCulture():GetCultureYield();
-						averageScience = averageScience + otherPlayer:GetTechs():GetScienceYield();
+						averageTechs = averageTechs + techProgress[otherPlayer:GetID()];
+						averageCivics = averageCivics + civicsProgress[otherPlayer:GetID()];
 						playerCount = playerCount + 1;
-						print("\t\tPlayer " .. otherPlayer:GetID() .. " Culture: " .. otherPlayer:GetCulture():GetCultureYield());
-						print("\t\tPlayer " .. otherPlayer:GetID() .. " Science: " .. otherPlayer:GetTechs():GetScienceYield());
+						print("\t\tPlayer " .. otherPlayer:GetID() .. " Techs: " .. techProgress[otherPlayer:GetID()]);
+						print("\t\tPlayer " .. otherPlayer:GetID() .. " Civics: " .. civicsProgress[otherPlayer:GetID()]);
 					end
 				end
-				averageCulture = averageCulture / playerCount;
-				averageScience = averageScience / playerCount;
-				print("\tAverage Culture of Opponents: " .. averageCulture);
-				print("\tAverage Science of Opponents: " .. averageScience);
+				averageTechs = averageTechs / playerCount;
+				averageCivics = averageCivics / playerCount;
+				print("\tAverage Techs of Opponents: " .. averageTechs);
+				print("\tAverage Civics of Opponents: " .. averageCivics);
+				print("\tPlayer " .. ownerID .. " Techs: " .. techProgress[ownerID]);
+				print("\tPlayer " .. ownerID .. " Civics: " .. civicsProgress[ownerID]);
 
 				-- applying culture properties
-				if PlayerManager.GetPlayer(ownerID):IsAlive() and PlayerManager.GetPlayer(ownerID):GetCulture():GetCultureYield() < averageCulture - cultureThreshold then
+				if PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThreshold then
 					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
 					print("\tCulture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
@@ -79,7 +90,7 @@ local function ApplyProperties()
 				end
 
 				-- applying science properties
-				if PlayerManager.GetPlayer(ownerID):IsAlive() and PlayerManager.GetPlayer(ownerID):GetTechs():GetScienceYield() < averageScience - scienceThreshold then
+				if PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThreshold then
 					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
 					print("\tScience property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
@@ -234,12 +245,26 @@ local function OnDistrictRemoved(playerID, districtID, cityID, plotX, plotY, dis
 	end
 end
 
+-- function to track each player's progress in the tech tree
+local function OnResearchCompleted(playerID, techID)
+	if PlayerManager.GetPlayer(playerID):IsMajor() then
+		techProgress[playerID] = techProgress[playerID] + 1;
+	end
+end
+
+-- function to track each player's progress in the civics tree
+local function OnCivicCompleted(playerID, civicID)
+	if PlayerManager.GetPlayer(playerID):IsMajor() then
+		civicsProgress[playerID] = civicsProgress[playerID] + 1;
+	end
+end
+
 -- function used to for testing purposes to determine how many arguments a callback gives
 local function PrintAllArgValues(string, ...)
 	args = {...};
 	print("FUNCTION: " .. string)
 	for index, val in pairs(args) do
-		print("\t" .. index .. ": " .. val);
+		print("\t" .. index .. ": " .. tostring(val));
 	end
 end
 
@@ -252,8 +277,14 @@ Events.TurnBegin.Add(ApplyProperties);
 Events.DistrictAddedToMap.Add(OnDistrictAdded);
 Events.DistrictRemovedFromMap.Add(OnDistrictRemoved);
 
+-- Tracking progress
+Events.ResearchCompleted.Add(OnResearchCompleted);
+Events.CivicCompleted.Add(OnCivicCompleted);
+
 -- testing the output args of various callbacks
 -- Events.CityAddedToMap.Add(function(...) PrintAllArgValues("City Add", ...) end);
 -- Events.CityRemovedFromMap.Add(function(...) PrintAllArgValues("City Remove", ...) end);
 -- Events.DistrictAddedToMap.Add(function(...) PrintAllArgValues("District Add", ...) end);
 -- Events.DistrictRemovedFromMap.Add(function(...) PrintAllArgValues("District Remove", ...) end);
+-- Events.ResearchCompleted.Add(function(...) PrintAllArgValues("Tech Completed", ...) end);
+-- Events.CivicCompleted.Add(function(...) PrintAllArgValues("Civic Completed", ...) end);
