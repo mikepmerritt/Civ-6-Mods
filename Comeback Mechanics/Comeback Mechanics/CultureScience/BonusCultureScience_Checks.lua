@@ -97,13 +97,25 @@ local function ApplyProperties()
 	end
 end
 
+-- helper function to check if a plot is already tracked for properties
+local function IsPlotTracked(plot) 
+	for _, modifierPlot in pairs(modifierPlots) do
+		if plot:GetX() == modifierPlot:GetX() and plot:GetY() == modifierPlot:GetY() then
+			return true;
+		end
+	end
+	return false;
+end
+
 -- helper function used to assign properties to city center plot
 local function AssignPropertyToCityCenter(name, playerID, cityID)
 	print(name .. " was created by player " .. playerID .. " in city " .. cityID);
 	local player = Players[playerID];
 	local city = player:GetCities():FindID(cityID);
 	local cityPlot = city:GetPlot();
-	modifierPlots[#modifierPlots + 1] = cityPlot;
+	if not IsPlotTracked(cityPlot) then 
+		modifierPlots[#modifierPlots + 1] = cityPlot;
+	end
 end
 
 -- helper function used to assign properties to a district plot
@@ -119,7 +131,9 @@ local function AssignPropertyToDistrict(name, playerID, cityID, suitableDistrict
 			if suitableDistricts[district.DistrictType] ~= nil then
 				local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
 				local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
-				modifierPlots[#modifierPlots + 1] = districtPlot;
+				if not IsPlotTracked(districtPlot) then 
+					modifierPlots[#modifierPlots + 1] = districtPlot;
+				end
 				break;
 			end
 		end
@@ -184,13 +198,13 @@ end
 -- but I need to value after it, so they are skipped
 local function OnDistrictAdded(playerID, districtID, cityID, plotX, plotY, districtType, _, _, percentComplete)
 	print("District added!")
-	print("\tPlayer ID: " .. playerID);
-	print("\tDistrict ID: " .. districtID);
-	print("\tCity ID: " .. cityID);
-	print("\tX: " .. plotX);
-	print("\tY: " .. plotY);
-	print("\tDistrict Type: " .. districtType);
-	print("\tPercent Complete: " .. percentComplete);
+	-- print("\tPlayer ID: " .. playerID);
+	-- print("\tDistrict ID: " .. districtID);
+	-- print("\tCity ID: " .. cityID);
+	-- print("\tX: " .. plotX);
+	-- print("\tY: " .. plotY);
+	-- print("\tDistrict Type: " .. districtType);
+	-- print("\tPercent Complete: " .. percentComplete);
 
 	-- adding the plot to the list of plots owned by the player
 	playerPlots[playerID][#playerPlots[playerID] + 1] = Map.GetPlot(plotX, plotY);
@@ -198,26 +212,24 @@ end
 
 local function OnDistrictRemoved(playerID, districtID, cityID, plotX, plotY, districtType)
 	print("District removed!")
-	print("\tPlayer ID: " .. playerID);
-	print("\tDistrict ID: " .. districtID);
-	print("\tCity ID: " .. cityID);
-	print("\tX: " .. plotX);
-	print("\tY: " .. plotY);
-	print("\tDistrict Type: " .. districtType);
+	-- print("\tPlayer ID: " .. playerID);
+	-- print("\tDistrict ID: " .. districtID);
+	-- print("\tCity ID: " .. cityID);
+	-- print("\tX: " .. plotX);
+	-- print("\tY: " .. plotY);
+	-- print("\tDistrict Type: " .. districtType);
 
 	-- removing the plot from the list of plots owned by the player
 	-- finding the index of this plot from the list of the player's district plots
-	local foundIndex;
+	local foundOnce = false;
 	for plotIndex, plot in pairs(playerPlots[playerID]) do
 		if plot:GetX() == plotX and plot:GetY() == plotY then
-			foundIndex = plotIndex;
-			break;
+			table.remove(playerPlots[playerID], plotIndex);
+			foundOnce = true;
 		end
 	end
-	-- removing the plot from the list
-	if foundIndex ~= nil then
-		table.remove(playerPlots[playerID], foundIndex);
-	else
+	-- ensure that at least one plot was removed the plot from the list
+	if foundOnce == false then
 		print("ERROR: The removed district was not attached to a player!");
 	end
 end
@@ -232,7 +244,7 @@ local function PrintAllArgValues(string, ...)
 end
 
 -- Events.TurnBegin.Add(OutputAllRequirementTypes);
-Events.CityProductionCompleted.Add(OnProductionCompleted);
+-- Events.CityProductionCompleted.Add(OnProductionCompleted);
 Events.CityProductionCompleted.Add(AssignPropertyOnBuildingCompletion);
 Events.TurnBegin.Add(ApplyProperties);
 
