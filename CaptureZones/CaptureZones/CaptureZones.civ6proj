@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>CaptureZones</AssemblyName>
     <RootNamespace>CaptureZones</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase><AddGameplayScripts id="AddVictoryHelper"><File>CaptureZoneVictory.lua</File></AddGameplayScripts><UpdateText id="AddVictoryText"><File>CaptureZoneVictoryText.sql</File></UpdateText><UpdateIcons id="AddVictoryIcons"><File>CaptureZoneVictoryIcons.sql</File></UpdateIcons><AddGameplayScripts id="AddVictoryTestingScript"><File>CaptureVictoryTesting.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase><AddGameplayScripts id="AddVictoryHelper"><File>CaptureZoneVictory.lua</File></AddGameplayScripts><UpdateText id="AddVictoryText"><File>CaptureZoneVictoryText.sql</File></UpdateText><UpdateIcons id="AddVictoryIcons"><File>CaptureZoneVictoryIcons.sql</File></UpdateIcons></InGameActions>]]></InGameActionData>
     <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="AddVictory"><File>CaptureVictoryConfig.sql</File></UpdateDatabase><UpdateText id="AddVictoryText"><File>CaptureVictoryConfigText.sql</File></UpdateText></FrontEndActions>]]></FrontEndActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
@@ -35,9 +35,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="CaptureVictoryConfigText.sql">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="CaptureVictoryTesting.lua">
       <SubType>Content</SubType>
     </Content>
     <Content Include="CaptureZoneImprovements.sql">
