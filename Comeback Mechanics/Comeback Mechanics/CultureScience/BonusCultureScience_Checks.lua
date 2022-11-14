@@ -54,13 +54,13 @@ local function ApplyProperties()
 				local averageCulture = 0;
 				local averageScience = 0;
 				local playerCount = 0;
-				for otherPlayerID, otherPlayer in pairs(majors) do
-					if ownerID ~= otherPlayerID then
+				for _, otherPlayer in pairs(majors) do
+					if ownerID ~= otherPlayer:GetID() then
 						averageCulture = averageCulture + otherPlayer:GetCulture():GetCultureYield();
 						averageScience = averageScience + otherPlayer:GetTechs():GetScienceYield();
 						playerCount = playerCount + 1;
-						print("\t\tPlayer " .. otherPlayerID .. " Culture: " .. otherPlayer:GetCulture():GetCultureYield());
-						print("\t\tPlayer " .. otherPlayerID .. " Science: " .. otherPlayer:GetTechs():GetScienceYield());
+						print("\t\tPlayer " .. otherPlayer:GetID() .. " Culture: " .. otherPlayer:GetCulture():GetCultureYield());
+						print("\t\tPlayer " .. otherPlayer:GetID() .. " Science: " .. otherPlayer:GetTechs():GetScienceYield());
 					end
 				end
 				averageCulture = averageCulture / playerCount;
