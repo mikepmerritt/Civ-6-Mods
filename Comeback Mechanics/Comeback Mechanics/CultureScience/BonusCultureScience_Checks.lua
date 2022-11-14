@@ -8,8 +8,9 @@ local function OutputAllRequirementTypes()
 	end
 end
 
--- NOTE: add special science districts into this
+-- NOTE: add special science and culture districts into these
 scienceDistricts = {["DISTRICT_CAMPUS"] = true, ["DISTRICT_OBSERVATORY"] = true, ["DISTRICT_SEOWON"] = true}
+cultureDistricts = {["DISTRICT_THEATER"] = true, ["DISTRICT_ACROPOLIS"] = true}
 
 -- table that will contain all plots with special buildings
 local modifierPlots = {};
@@ -96,36 +97,30 @@ local function ApplyProperties()
 	end
 end
 
--- playerID is the number for the player that triggered the event (0 is first player)
--- cityID is the number for the city that triggered the event (65536 is capital)
--- iConstructionType is a number that identifies what was produced (0 is unit, 1 is building, 2 is district)
--- unitID is the number identifier for the produced item, depends on iConstructionType (0 is monument, 4 is library)
--- bCancelled is not clear, mostly just false
-local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructionType, unitID, bCancelled)
-	-- monument
-	if iConstructionType == 1 and unitID == 0 then
-		print("Monument was created by player " .. playerID .. " in city " .. cityID);
-		local player = Players[playerID];
-		local city = player:GetCities():FindID(cityID);
-		local cityPlot = city:GetPlot();
-		modifierPlots[#modifierPlots + 1] = cityPlot;
-	end
-	-- library
-	if iConstructionType == 1 and unitID == 4 then
-		print("Library was created by player " .. playerID .. " in city " .. cityID);
-		local player = Players[playerID];
-		local city = player:GetCities():FindID(cityID);
-		local cityDistricts = city:GetDistricts();
-		
-		-- code inspired by code from City.ltp
-		for district in GameInfo.Districts() do
-			if cityDistricts:HasDistrict(district.Index) then
-				if scienceDistricts[district.DistrictType] ~= nil then
-					local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
-					local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
-					modifierPlots[#modifierPlots + 1] = districtPlot;
-					break;
-				end
+-- helper function used to assign properties to city center plot
+local function AssignPropertyToCityCenter(name, playerID, cityID)
+	print(name .. " was created by player " .. playerID .. " in city " .. cityID);
+	local player = Players[playerID];
+	local city = player:GetCities():FindID(cityID);
+	local cityPlot = city:GetPlot();
+	modifierPlots[#modifierPlots + 1] = cityPlot;
+end
+
+-- helper function used to assign properties to a district plot
+local function AssignPropertyToDistrict(name, playerID, cityID, suitableDistricts)
+	print(name .. " was created by player " .. playerID .. " in city " .. cityID);
+	local player = Players[playerID];
+	local city = player:GetCities():FindID(cityID);
+	local cityDistricts = city:GetDistricts();
+	
+	-- code inspired by code from City.ltp
+	for district in GameInfo.Districts() do
+		if cityDistricts:HasDistrict(district.Index) then
+			if suitableDistricts[district.DistrictType] ~= nil then
+				local cityDistrict = cityDistricts:GetDistrict(district.Index); -- add 0 parameter?
+				local districtPlot = Map.GetPlot(cityDistrict:GetX(), cityDistrict:GetY());
+				modifierPlots[#modifierPlots + 1] = districtPlot;
+				break;
 			end
 		end
 	end
@@ -136,7 +131,47 @@ end
 -- iConstructionType is a number that identifies what was produced (0 is unit, 1 is building, 2 is district)
 -- unitID is the number identifier for the produced item, depends on iConstructionType (0 is monument, 4 is library)
 -- bCancelled is not clear, mostly just false
-local function OnProductionCompleted() 
+local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructionType, unitID, bCancelled)
+	-- monument
+	if iConstructionType == 1 and unitID == 0 then
+		AssignPropertyToCityCenter("Monument", playerID, cityID);
+	end
+	-- library
+	if iConstructionType == 1 and unitID == 4 then
+		AssignPropertyToDistrict("Library", playerID, cityID, scienceDistricts);
+	end
+	-- university
+	if iConstructionType == 1 and unitID == 16 then
+		AssignPropertyToDistrict("University", playerID, cityID, scienceDistricts);
+	end
+	-- research lab
+	if iConstructionType == 1 and unitID == 36 then
+		AssignPropertyToDistrict("Research Lab", playerID, cityID, scienceDistricts);
+	end
+	-- amphitheater
+	if iConstructionType == 1 and unitID == 14 then
+		AssignPropertyToDistrict("Amphitheater", playerID, cityID, cultureDistricts);
+	end
+	-- art museum
+	if iConstructionType == 1 and unitID == 23 then
+		AssignPropertyToDistrict("Art Museum", playerID, cityID, cultureDistricts);
+	end
+	-- artifact museum
+	if iConstructionType == 1 and unitID == 24 then
+		AssignPropertyToDistrict("Archaeological Museum", playerID, cityID, cultureDistricts);
+	end
+	-- broadcast center
+	if iConstructionType == 1 and unitID == 34 then
+		AssignPropertyToDistrict("Broadcast Center", playerID, cityID, cultureDistricts);
+	end
+end
+
+-- playerID is the number for the player that triggered the event (0 is first player)
+-- cityID is the number for the city that triggered the event (65536 is capital)
+-- iConstructionType is a number that identifies what was produced (0 is unit, 1 is building, 2 is district)
+-- unitID is the number identifier for the produced item, depends on iConstructionType (0 is monument, 4 is library)
+-- bCancelled is not clear, mostly just false
+local function OnProductionCompleted(playerID, cityID, iConstructionType, unitID, bCancelled) 
 	print("Completed production");
 	print("\tplayerID: " .. playerID);
 	print("\tcityID: " .. cityID);
@@ -197,7 +232,7 @@ local function PrintAllArgValues(string, ...)
 end
 
 -- Events.TurnBegin.Add(OutputAllRequirementTypes);
--- Events.CityProductionCompleted.Add(OnProductionCompleted);
+Events.CityProductionCompleted.Add(OnProductionCompleted);
 Events.CityProductionCompleted.Add(AssignPropertyOnBuildingCompletion);
 Events.TurnBegin.Add(ApplyProperties);
 
