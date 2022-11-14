@@ -67,11 +67,11 @@ local function GenerateCaptureZones()
 
 		while not markingFinished do
 			local minLocation = nil -- failsafe value
-			local minDistance = -1 -- failsafe value
+			local minDistance = 1000000 -- failsafe value
 
 			-- find city with minimum distance from enemy
 			for location, distance in pairs(cityMinDistancesToEnemy) do
-				if distance > minDistance then
+				if distance < minDistance then
 					minLocation = location
 					minDistance = distance
 				end
@@ -84,7 +84,7 @@ local function GenerateCaptureZones()
 			-- end
 
 			-- if no city was found (the for loop didn't run because all cities were eliminated as options) exit without marking and print that for error tracking
-			if minLocation == nil and minDistance < 0 then
+			if minLocation == nil and minDistance == 1000000 then
 				print("MARKING: Player " .. player:GetID() .. " had no tiles to mark as capture zones, aborting placement without placing")
 				markingFinished = true
 			else
