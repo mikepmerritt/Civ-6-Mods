@@ -67,11 +67,12 @@ local function GenerateCaptureZones()
 
 		while not markingFinished do
 			local minLocation = nil -- failsafe value
-			local minDistance = -1 -- failsafe value
+			local minDistance = 1000000 -- failsafe value
 
 			-- find city with minimum distance from enemy
 			for location, distance in pairs(cityMinDistancesToEnemy) do
-				if distance > minDistance then
+				print("SEARCHING: City at [" .. location .. "] is " .. distance .. " distance away from the nearest enemy city")
+				if distance < minDistance then
 					minLocation = location
 					minDistance = distance
 				end
@@ -200,7 +201,7 @@ local function Initialize()
 	-- debug
 	-- Events.TurnEnd.Add(PrintAllMarks)
 	-- Events.TurnEnd.Add(PrintCityTiles)
-	-- Events.TurnEnd.Add(GenerateCaptureZones)
+	Events.TurnEnd.Add(GenerateCaptureZones)
 end
 
 Initialize()
