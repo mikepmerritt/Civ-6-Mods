@@ -1,5 +1,3 @@
--- Attempt 3 at creating comeback mechanics by adding new modifiers to science and culture buildings
-
 -- New requirement sets, requirements, and arguments
 INSERT INTO Requirements (RequirementId, RequirementType, Likeliness, Impact, Reverse, Persistent, ProgressWeight, Triggered) VALUES
 ('REQUIRES_HAS_BEHIND_SCIENCE_SAM', 'REQUIREMENT_PLOT_PROPERTY_MATCHES', 0, 0, 0, 0, 1, 0),

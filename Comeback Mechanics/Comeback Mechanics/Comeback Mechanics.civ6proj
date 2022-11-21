@@ -30,7 +30,6 @@
     <None Include="Comeback_Mechanics.Art.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Demo" />
     <Folder Include="CultureScience" />
   </ItemGroup>
   <ItemGroup>
@@ -38,15 +37,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="CultureScience\BonusCultureScience_Checks.lua">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Demo\DoubleYields_ScienceCulture.sql">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Demo\DoubleYields_ScienceCulture_ReqChecks.lua">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Demo\Remove_Monument_Yields_Demo.sql">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

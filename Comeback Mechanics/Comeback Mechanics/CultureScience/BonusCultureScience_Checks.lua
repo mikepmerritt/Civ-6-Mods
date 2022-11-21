@@ -1,13 +1,3 @@
--- function to output all available requirement types
-local function OutputAllRequirementTypes()
-	-- TAKEN FROM https://civ6pedia.x0.com/guide/modifier03.html
-	for row in GameInfo.Types() do
-		if row.Kind == "KIND_REQUIREMENT" then
-			print("\t" .. row.Type);
-		end
-	end
-end
-
 -- NOTE: add special science and culture districts into these
 scienceDistricts = {["DISTRICT_CAMPUS"] = true, ["DISTRICT_OBSERVATORY"] = true, ["DISTRICT_SEOWON"] = true}
 cultureDistricts = {["DISTRICT_THEATER"] = true, ["DISTRICT_ACROPOLIS"] = true}
@@ -56,9 +46,9 @@ local function ApplyProperties()
 			table.remove(modifierPlots, plotIndex);
 		-- otherwise, go to the plot and apply the modifiers as necessary
 		else
-			print("Handling properties on plot at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. "):");
+			-- print("Handling properties on plot at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. "):");
 			if PlayerManager.GetPlayer(ownerID):IsMajor() then
-				print("\tOwner ID: " .. ownerID);
+				-- print("\tOwner ID: " .. ownerID);
 				local majors = PlayerManager.GetAliveMajors();
 				-- fetching other players' cultures and sciences, and calculating averages
 				local averageTechs = 0;
@@ -69,40 +59,40 @@ local function ApplyProperties()
 						averageTechs = averageTechs + techProgress[otherPlayer:GetID()];
 						averageCivics = averageCivics + civicsProgress[otherPlayer:GetID()];
 						playerCount = playerCount + 1;
-						print("\t\tPlayer " .. otherPlayer:GetID() .. " Techs: " .. techProgress[otherPlayer:GetID()]);
-						print("\t\tPlayer " .. otherPlayer:GetID() .. " Civics: " .. civicsProgress[otherPlayer:GetID()]);
+						-- print("\t\tPlayer " .. otherPlayer:GetID() .. " Techs: " .. techProgress[otherPlayer:GetID()]);
+						-- print("\t\tPlayer " .. otherPlayer:GetID() .. " Civics: " .. civicsProgress[otherPlayer:GetID()]);
 					end
 				end
 				averageTechs = averageTechs / playerCount;
 				averageCivics = averageCivics / playerCount;
-				print("\tAverage Techs of Opponents: " .. averageTechs);
-				print("\tAverage Civics of Opponents: " .. averageCivics);
-				print("\tPlayer " .. ownerID .. " Techs: " .. techProgress[ownerID]);
-				print("\tPlayer " .. ownerID .. " Civics: " .. civicsProgress[ownerID]);
+				-- print("\tAverage Techs of Opponents: " .. averageTechs);
+				-- print("\tAverage Civics of Opponents: " .. averageCivics);
+				-- print("\tPlayer " .. ownerID .. " Techs: " .. techProgress[ownerID]);
+				-- print("\tPlayer " .. ownerID .. " Civics: " .. civicsProgress[ownerID]);
 
 				-- applying culture properties
 				if PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThreshold then
 					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
-					print("\tCulture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					-- print("\tCulture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
 					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 0);
-					print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					-- print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				end
 
 				-- applying science properties
 				if PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThreshold then
 					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
-					print("\tScience property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					-- print("\tScience property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
 					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 0);
-					print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					-- print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				end
 			else
-				print("\tPlayer is a minor power, no properties applied.");
+				-- print("\tPlayer is a minor power, no properties applied.");
 				modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 0);
-				print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				-- print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 0);
-				print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				-- print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 			end
 		end
 	end
@@ -191,45 +181,14 @@ local function AssignPropertyOnBuildingCompletion(playerID, cityID, iConstructio
 	end
 end
 
--- playerID is the number for the player that triggered the event (0 is first player)
--- cityID is the number for the city that triggered the event (65536 is capital)
--- iConstructionType is a number that identifies what was produced (0 is unit, 1 is building, 2 is district)
--- unitID is the number identifier for the produced item, depends on iConstructionType (0 is monument, 4 is library)
--- bCancelled is not clear, mostly just false
-local function OnProductionCompleted(playerID, cityID, iConstructionType, unitID, bCancelled) 
-	print("Completed production");
-	print("\tplayerID: " .. playerID);
-	print("\tcityID: " .. cityID);
-	print("\tiConstructionType: " .. iConstructionType);
-	print("\tunitID: " .. unitID);
-	print("\tbCancelled: " .. tostring(bCancelled));
-end
-
 -- no clue what the parameters after districtType and before percentComplete represent
 -- but I need to value after it, so they are skipped
 local function OnDistrictAdded(playerID, districtID, cityID, plotX, plotY, districtType, _, _, percentComplete)
-	print("District added!")
-	-- print("\tPlayer ID: " .. playerID);
-	-- print("\tDistrict ID: " .. districtID);
-	-- print("\tCity ID: " .. cityID);
-	-- print("\tX: " .. plotX);
-	-- print("\tY: " .. plotY);
-	-- print("\tDistrict Type: " .. districtType);
-	-- print("\tPercent Complete: " .. percentComplete);
-
 	-- adding the plot to the list of plots owned by the player
 	playerPlots[playerID][#playerPlots[playerID] + 1] = Map.GetPlot(plotX, plotY);
 end
 
 local function OnDistrictRemoved(playerID, districtID, cityID, plotX, plotY, districtType)
-	print("District removed!")
-	-- print("\tPlayer ID: " .. playerID);
-	-- print("\tDistrict ID: " .. districtID);
-	-- print("\tCity ID: " .. cityID);
-	-- print("\tX: " .. plotX);
-	-- print("\tY: " .. plotY);
-	-- print("\tDistrict Type: " .. districtType);
-
 	-- removing the plot from the list of plots owned by the player
 	-- finding the index of this plot from the list of the player's district plots
 	local foundOnce = false;
@@ -259,17 +218,7 @@ local function OnCivicCompleted(playerID, civicID)
 	end
 end
 
--- function used to for testing purposes to determine how many arguments a callback gives
-local function PrintAllArgValues(string, ...)
-	args = {...};
-	print("FUNCTION: " .. string)
-	for index, val in pairs(args) do
-		print("\t" .. index .. ": " .. tostring(val));
-	end
-end
-
--- Events.TurnBegin.Add(OutputAllRequirementTypes);
--- Events.CityProductionCompleted.Add(OnProductionCompleted);
+-- Assigning properties
 Events.CityProductionCompleted.Add(AssignPropertyOnBuildingCompletion);
 Events.TurnBegin.Add(ApplyProperties);
 
@@ -280,11 +229,3 @@ Events.DistrictRemovedFromMap.Add(OnDistrictRemoved);
 -- Tracking progress
 Events.ResearchCompleted.Add(OnResearchCompleted);
 Events.CivicCompleted.Add(OnCivicCompleted);
-
--- testing the output args of various callbacks
--- Events.CityAddedToMap.Add(function(...) PrintAllArgValues("City Add", ...) end);
--- Events.CityRemovedFromMap.Add(function(...) PrintAllArgValues("City Remove", ...) end);
--- Events.DistrictAddedToMap.Add(function(...) PrintAllArgValues("District Add", ...) end);
--- Events.DistrictRemovedFromMap.Add(function(...) PrintAllArgValues("District Remove", ...) end);
--- Events.ResearchCompleted.Add(function(...) PrintAllArgValues("Tech Completed", ...) end);
--- Events.CivicCompleted.Add(function(...) PrintAllArgValues("Civic Completed", ...) end);
