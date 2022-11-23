@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # ModBuddy Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "Comeback Mechanics", "Comeback Mechanics\Comeback Mechanics.civ6proj", "{A2E830FF-E7F6-4F36-9980-8ABBFE5071C8}"
+Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "ComebackMechanics", "ComebackMechanics\ComebackMechanics.civ6proj", "{A2E830FF-E7F6-4F36-9980-8ABBFE5071C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

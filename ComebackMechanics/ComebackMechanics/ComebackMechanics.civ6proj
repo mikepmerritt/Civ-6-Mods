@@ -19,15 +19,15 @@
     <AssociationData><![CDATA[<Associations>
   <Dependency type="Dlc" title="Expansion: Gathering Storm" id="4873eb62-8ccc-4574-b784-dda455e74e68" />
 </Associations>]]></AssociationData>
-    <AssemblyName>Comeback Mechanics</AssemblyName>
-    <RootNamespace>Comeback Mechanics</RootNamespace>
+    <AssemblyName>ComebackMechanics</AssemblyName>
+    <RootNamespace>ComebackMechanics</RootNamespace>
     <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DoubleCultureScience"><File>CultureScience/BonusCultureScience.sql</File></UpdateDatabase><AddGameplayScripts id="DoubleCultureScienceChecks"><File>CultureScience/BonusCultureScience_Checks.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Comeback_Mechanics.Art.xml" />
+    <None Include="ComebackMechanics.Art.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CultureScience" />
