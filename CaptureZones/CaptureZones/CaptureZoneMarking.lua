@@ -178,14 +178,14 @@ local function MarkPlotsOnEraChange(previousEra, newEra)
 
 	if newEra == 0 then
 		-- game start, used for debugging/testing
-	elseif newEra == 2 then
-		-- the game has reached medieval era
+	elseif newEra == 1 then
+		-- the game has reached classical era
 		GenerateCaptureZones()
-	elseif newEra == 4 then
-		-- the game has reached industrial era
+	elseif newEra == 3 then
+		-- the game has reached renaissance era
 		GenerateCaptureZones()
-	elseif newEra == 6 then
-		-- the game has reached modern era
+	elseif newEra == 5 then
+		-- the game has reached atomic era
 		GenerateCaptureZones()
 	end
 end
