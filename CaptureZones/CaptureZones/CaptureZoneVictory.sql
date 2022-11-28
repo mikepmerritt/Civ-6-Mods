@@ -44,7 +44,7 @@ INSERT INTO RequirementStrings (RequirementId, Context, Text) VALUES
 -- Modifiers for projects
 
 INSERT INTO Modifiers (ModifierId, ModifierType, RunOnce, NewOnly, Permanent, Repeatable, SubjectRequirementSetId) VALUES
-('SHOW_SUPERIORITY_STRENGTH_INCREASE_SAM', 'MODIFIER_UNIT_ADJUST_COMBAT_STRENGTH', 0, 0, 0, 0, 'REQUIREMENTS_SHOW_SUPERIORITY_SAM'),
+('SHOW_SUPERIORITY_STRENGTH_INCREASE_SAM', 'MODIFIER_PLAYER_UNITS_ADJUST_COMBAT_STRENGTH', 0, 0, 0, 0, 'REQUIREMENTS_SHOW_SUPERIORITY_SAM'),
 ('EXERT_INFLUENCE_FAVOR_INCREASE_SAM', 'MODIFIER_PLAYER_ADJUST_EXTRA_FAVOR_PER_TURN', 0, 0, 0, 0, NULL);
 
 INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES
@@ -53,6 +53,20 @@ INSERT INTO ModifierArguments (ModifierId, Name, Type, Value) VALUES
 
 INSERT INTO ProjectCompletionModifiers (ProjectType, ModifierId) VALUES
 ('PROJECT_EXERT_INFLUENCE_SAM', 'EXERT_INFLUENCE_FAVOR_INCREASE_SAM');
+
+-- More stuff for Show Superiority combat bonus
+
+INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES
+('SHOW_SUPERIORITY_STRENGTH_INCREASE_SAM', 'Preview', 'LOC_SHOW_SUPERIORITY_STRENGTH_INCREASE_SAM_DESCRIPTION');
+
+INSERT INTO Types (Type, Kind) VALUES
+('ABILITY_SHOW_SUPERIORITY', 'KIND_ABILITY');
+
+INSERT INTO UnitAbilites (UnitAbilityType, Name, Description, Inactive, ShowFloatTextWhenEarned, Permanent) VALUES
+('ABILITY_SHOW_SUPERIORITY', 'LOC_ABILITY_SHOW_SUPERIORITY_NAME', 'LOC_ABILITY_SHOW_SUPERIORITY_DESCRIPTION', 1, 0, 1);
+
+INSERT INTO UnitAbilityModifiers (UnitAbilityType, ModifierId) VALUES
+('ABILITY_SHOW_SUPERIORITY', 'SHOW_SUPERIORITY_STRENGTH_INCREASE_SAM');
 
 -- using diplomatic icon as placeholder
 INSERT INTO Victories (VictoryType, Name, Blurb, RequirementSetId, Description, Icon) VALUES
