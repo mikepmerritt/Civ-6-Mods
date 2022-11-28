@@ -21,8 +21,8 @@ for _, player in pairs(majorPlayerList) do
 end
 
 -- TODO: change these values to be based on actual gameplay
-local techThreshold = 4;
-local civicsThreshold = 4;
+local techThresholds = {[0] = 2, [1] = 4};
+local civicsThresholds = {[0] = 2, [1] = 4};
 
 local function ApplyProperties()
 	-- step through each plot in modifierPlots
@@ -46,9 +46,9 @@ local function ApplyProperties()
 			table.remove(modifierPlots, plotIndex);
 		-- otherwise, go to the plot and apply the modifiers as necessary
 		else
-			-- print("Handling properties on plot at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. "):");
+			print("Handling properties on plot at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. "):");
 			if PlayerManager.GetPlayer(ownerID):IsMajor() then
-				-- print("\tOwner ID: " .. ownerID);
+				print("\tOwner ID: " .. ownerID);
 				local majors = PlayerManager.GetAliveMajors();
 				-- fetching other players' cultures and sciences, and calculating averages
 				local averageTechs = 0;
@@ -59,40 +59,46 @@ local function ApplyProperties()
 						averageTechs = averageTechs + techProgress[otherPlayer:GetID()];
 						averageCivics = averageCivics + civicsProgress[otherPlayer:GetID()];
 						playerCount = playerCount + 1;
-						-- print("\t\tPlayer " .. otherPlayer:GetID() .. " Techs: " .. techProgress[otherPlayer:GetID()]);
-						-- print("\t\tPlayer " .. otherPlayer:GetID() .. " Civics: " .. civicsProgress[otherPlayer:GetID()]);
+						print("\t\tPlayer " .. otherPlayer:GetID() .. " Techs: " .. techProgress[otherPlayer:GetID()]);
+						print("\t\tPlayer " .. otherPlayer:GetID() .. " Civics: " .. civicsProgress[otherPlayer:GetID()]);
 					end
 				end
 				averageTechs = averageTechs / playerCount;
 				averageCivics = averageCivics / playerCount;
-				-- print("\tAverage Techs of Opponents: " .. averageTechs);
-				-- print("\tAverage Civics of Opponents: " .. averageCivics);
-				-- print("\tPlayer " .. ownerID .. " Techs: " .. techProgress[ownerID]);
-				-- print("\tPlayer " .. ownerID .. " Civics: " .. civicsProgress[ownerID]);
+				print("\tAverage Techs of Opponents: " .. averageTechs);
+				print("\tAverage Civics of Opponents: " .. averageCivics);
+				print("\tPlayer " .. ownerID .. " Techs: " .. techProgress[ownerID]);
+				print("\tPlayer " .. ownerID .. " Civics: " .. civicsProgress[ownerID]);
 
 				-- applying culture properties
-				if PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThreshold then
+				if PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThresholds[1] then
+					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 2);
+					print("\tExtra culture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				elseif PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThresholds[0] then
 					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
-					-- print("\tCulture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					print("\tCulture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
 					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 0);
-					-- print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				end
 
 				-- applying science properties
-				if PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThreshold then
+				if PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThresholds[1] then
+					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 2);
+					print("\tExtra science property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				elseif PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThresholds[0] then
 					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
-					-- print("\tScience property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					print("\tScience property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
 					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 0);
-					-- print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+					print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				end
 			else
-				-- print("\tPlayer is a minor power, no properties applied.");
+				print("\tPlayer is a minor power, no properties applied.");
 				modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 0);
-				-- print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				print("\tCulture property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 0);
-				-- print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				print("\tScience property removed at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 			end
 		end
 	end
