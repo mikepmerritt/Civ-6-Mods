@@ -21,8 +21,8 @@ for _, player in pairs(majorPlayerList) do
 end
 
 -- TODO: change these values to be based on actual gameplay
-local techThreshold = 4;
-local civicsThreshold = 4;
+local techThresholds = {[0] = 2, [1] = 4};
+local civicsThresholds = {[0] = 2, [1] = 4};
 
 local function ApplyProperties()
 	-- step through each plot in modifierPlots
@@ -71,7 +71,10 @@ local function ApplyProperties()
 				-- print("\tPlayer " .. ownerID .. " Civics: " .. civicsProgress[ownerID]);
 
 				-- applying culture properties
-				if PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThreshold then
+				if PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThresholds[1] then
+					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 2);
+					-- print("\tExtra culture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				elseif PlayerManager.GetPlayer(ownerID):IsAlive() and civicsProgress[ownerID] <= averageCivics - civicsThresholds[0] then
 					modifierPlot:SetProperty("SAM_ENABLE_CULTURE_BONUS", 1);
 					-- print("\tCulture property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
@@ -80,7 +83,10 @@ local function ApplyProperties()
 				end
 
 				-- applying science properties
-				if PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThreshold then
+				if PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThresholds[1] then
+					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 2);
+					-- print("\tExtra science property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
+				elseif PlayerManager.GetPlayer(ownerID):IsAlive() and techProgress[ownerID] <= averageTechs - techThresholds[0] then
 					modifierPlot:SetProperty("SAM_ENABLE_SCIENCE_BONUS", 1);
 					-- print("\tScience property applied at (" .. modifierPlot:GetX() .. ", " .. modifierPlot:GetY() .. ")");
 				else
@@ -110,7 +116,7 @@ end
 
 -- helper function used to assign properties to city center plot
 local function AssignPropertyToCityCenter(name, playerID, cityID)
-	print(name .. " was created by player " .. playerID .. " in city " .. cityID);
+	-- print(name .. " was created by player " .. playerID .. " in city " .. cityID);
 	local player = Players[playerID];
 	local city = player:GetCities():FindID(cityID);
 	local cityPlot = city:GetPlot();
@@ -121,7 +127,7 @@ end
 
 -- helper function used to assign properties to a district plot
 local function AssignPropertyToDistrict(name, playerID, cityID, suitableDistricts)
-	print(name .. " was created by player " .. playerID .. " in city " .. cityID);
+	-- print(name .. " was created by player " .. playerID .. " in city " .. cityID);
 	local player = Players[playerID];
 	local city = player:GetCities():FindID(cityID);
 	local cityDistricts = city:GetDistricts();
