@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>ComebackMechanics</AssemblyName>
     <RootNamespace>ComebackMechanics</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="DoubleCultureScience"><File>CultureScience/BonusCultureScience.sql</File></UpdateDatabase><AddGameplayScripts id="DoubleCultureScienceChecks"><File>CultureScience/BonusCultureScience_Checks.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><UpdateDatabase id="AddComebackMechanics"><File>CultureScience/BonusCultureScience.sql</File><File>Production/ProductionComeback.sql</File></UpdateDatabase><AddGameplayScripts id="AddComebackMechanicChecks"><File>CultureScience/BonusCultureScience_Checks.lua</File><File>Production/ProductionComeback_Checks.lua</File></AddGameplayScripts></InGameActions>]]></InGameActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -31,12 +31,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CultureScience" />
+    <Folder Include="Production" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CultureScience\BonusCultureScience.sql">
       <SubType>Content</SubType>
     </Content>
     <Content Include="CultureScience\BonusCultureScience_Checks.lua">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Production\ProductionComeback.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Production\ProductionComeback_Checks.lua">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
