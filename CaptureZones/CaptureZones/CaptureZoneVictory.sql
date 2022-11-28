@@ -62,7 +62,7 @@ INSERT INTO ModifierStrings (ModifierId, Context, Text) VALUES
 INSERT INTO Types (Type, Kind) VALUES
 ('ABILITY_SHOW_SUPERIORITY', 'KIND_ABILITY');
 
-INSERT INTO UnitAbilites (UnitAbilityType, Name, Description, Inactive, ShowFloatTextWhenEarned, Permanent) VALUES
+INSERT INTO UnitAbilities (UnitAbilityType, Name, Description, Inactive, ShowFloatTextWhenEarned, Permanent) VALUES
 ('ABILITY_SHOW_SUPERIORITY', 'LOC_ABILITY_SHOW_SUPERIORITY_NAME', 'LOC_ABILITY_SHOW_SUPERIORITY_DESCRIPTION', 1, 0, 1);
 
 INSERT INTO UnitAbilityModifiers (UnitAbilityType, ModifierId) VALUES
