@@ -190,6 +190,15 @@ local function MarkPlotsOnEraChange(previousEra, newEra)
 	end
 end
 
+local function OutputAllModifierTypes()
+    -- TAKEN FROM https://civ6pedia.x0.com/guide/modifier03.html
+    for row in GameInfo.Types() do
+        if row.Kind == "KIND_MODIFIER" then
+            print("\t" .. row.Type)
+        end
+    end
+end
+
 local function Initialize()
 	-- plot marking
 	Events.GameEraChanged.Add(MarkPlotsOnEraChange)
@@ -201,6 +210,7 @@ local function Initialize()
 	-- Events.TurnEnd.Add(PrintAllMarks)
 	-- Events.TurnEnd.Add(PrintCityTiles)
 	-- Events.TurnEnd.Add(GenerateCaptureZones)
+	-- Events.TurnEnd.Add(OutputAllModifierTypes)
 end
 
 Initialize()
