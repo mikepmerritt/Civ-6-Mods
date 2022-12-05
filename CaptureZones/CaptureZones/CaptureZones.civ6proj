@@ -21,7 +21,7 @@
 </Associations>]]></AssociationData>
     <AssemblyName>CaptureZones</AssemblyName>
     <RootNamespace>CaptureZones</RootNamespace>
-    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>CaptureZoneResourceIcons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase><AddGameplayScripts id="AddVictoryHelper"><File>CaptureZoneVictory.lua</File></AddGameplayScripts><UpdateText id="AddVictoryText"><File>CaptureZoneVictoryText.sql</File></UpdateText><UpdateIcons id="AddVictoryIcons"><File>CaptureZoneVictoryIcons.sql</File></UpdateIcons></InGameActions>]]></InGameActionData>
+    <InGameActionData><![CDATA[<InGameActions><AddGameplayScripts id="CreateZones"><File>CaptureZoneMarking.lua</File></AddGameplayScripts><UpdateDatabase id="AddVPResource"><File>CaptureZoneResource.sql</File></UpdateDatabase><UpdateText id="AddVPText"><File>CaptureZoneResourceText.sql</File></UpdateText><UpdateIcons id="AddVPIcons"><File>Icons/Icons.sql</File></UpdateIcons><UpdateDatabase id="AddImprovements"><File>CaptureZoneImprovements.sql</File></UpdateDatabase><UpdateText id="AddImprovementText"><File>CaptureZoneImprovementText.sql</File></UpdateText><UpdateDatabase id="AddVictory"><File>CaptureZoneVictory.sql</File></UpdateDatabase><AddGameplayScripts id="AddVictoryHelper"><File>CaptureZoneVictory.lua</File></AddGameplayScripts><UpdateText id="AddVictoryText"><File>CaptureZoneVictoryText.sql</File></UpdateText><UpdateIcons id="AddVictoryIcons"><File>CaptureZoneVictoryIcons.sql</File></UpdateIcons><UpdateArt id="UpdateArt"><File>(Mod Art Dependency File)</File></UpdateArt></InGameActions>]]></InGameActionData>
     <FrontEndActionData><![CDATA[<FrontEndActions><UpdateDatabase id="AddVictory"><File>CaptureVictoryConfig.sql</File></UpdateDatabase><UpdateText id="AddVictoryText"><File>CaptureVictoryConfigText.sql</File></UpdateText></FrontEndActions>]]></FrontEndActionData>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
@@ -31,6 +31,9 @@
     <None Include="CaptureZones.Art.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Artdefs\UserInterface.artdef">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="CaptureVictoryConfig.sql">
       <SubType>Content</SubType>
     </Content>
@@ -64,6 +67,48 @@
     <Content Include="CaptureZoneVictoryText.sql">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Icons\Icons.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_22.dds">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_22.tex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_256.dds">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_256.tex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_38.dds">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_38.tex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_50.dds">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_50.tex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_64.dds">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_64.tex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="XLPs\ResourceVictoryPoints.xlp">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Artdefs" />
+    <Folder Include="Icons" />
+    <Folder Include="Textures\" />
+    <Folder Include="XLPs" />
   </ItemGroup>
   <Import Project="$(MSBuildLocalExtensionPath)Civ6.targets" />
 </Project>
