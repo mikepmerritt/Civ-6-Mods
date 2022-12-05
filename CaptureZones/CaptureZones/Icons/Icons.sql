@@ -5,6 +5,10 @@ INSERT INTO IconTextureAtlases (Name, IconSize, IconsPerRow, IconsPerColumn, Fil
 ('ICON_ATLAS_SAM_RESOURCES', 50, 1, 1, 'ICON_SAM_VICTORY_POINTS_50.dds'),
 ('ICON_ATLAS_SAM_RESOURCES', 38, 1, 1, 'ICON_SAM_VICTORY_POINTS_38.dds');
 
+-- adding the tiny one for use in text (hopefully)
+INSERT INTO IconTextureAtlases (Name, Baseline, IconSize, IconsPerRow, IconsPerColumn, Filename) VALUES
+('ICON_ATLAS_SAM_RESOURCES', 6, 22, 1, 1, 'ICON_SAM_VICTORY_POINTS_22.dds');
+
 -- loading icons
 INSERT OR REPLACE INTO IconDefinitions (Name, Atlas, 'Index') VALUES
 ('ICON_RESOURCE_SAM_VICTORY_POINTS', 'ICON_ATLAS_SAM_RESOURCES', 0),

@@ -70,6 +70,12 @@
     <Content Include="Icons\Icons.sql">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_22.dds">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Textures\ICON_SAM_VICTORY_POINTS_22.tex">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Textures\ICON_SAM_VICTORY_POINTS_256.dds">
       <SubType>Content</SubType>
     </Content>

@@ -1,13 +1,13 @@
 Starting AssetCooker...
 Argument '--shaders' has been deprecated and is no longer used.
 XLP cook starting...
-C:\Users\Scarfy\Documents\SER300\Civ-6-Mods\CaptureZones\CaptureZones\XLPs\ResourceVictoryPoints.xlp
-Opened output file: C:\Users\Scarfy\Documents\My Games\Sid Meier's Civilization VI\Mods\CaptureZones\Platforms\MacOS\BLPs/UI/Icons.blp    For XLP: 'C:\Users\Scarfy\Documents\SER300\Civ-6-Mods\CaptureZones\CaptureZones\XLPs\ResourceVictoryPoints.xlp'
+D:\QU\2022-2023\SER300\Civ-6-Mods\CaptureZones\CaptureZones\XLPs\ResourceVictoryPoints.xlp
+Opened output file: C:\Users\scarf\OneDrive\Documents\My Games\Sid Meier's Civilization VI\Mods\CaptureZones\Platforms\MacOS\BLPs/UI/Icons.blp    For XLP: 'D:\QU\2022-2023\SER300\Civ-6-Mods\CaptureZones\CaptureZones\XLPs\ResourceVictoryPoints.xlp'
 Could not load digest key: ''.  Using mod key to sign BLP.
 Starting 'UI/Icons'
-Load finished for: 'UI/Icons' in 0.001 seconds
-Cook finished for: 'UI/Icons' in 0.005 seconds
-Disk write finished for: 'UI/Icons' in 0.051 seconds
+Load finished for: 'UI/Icons' in 0.004 seconds
+Cook finished for: 'UI/Icons' in 0.009 seconds
+Disk write finished for: 'UI/Icons' in 0.099 seconds
 Cleanup finished for: 'UI/Icons' in 0.000 seconds
 XLP cook completed with success.
-Cook completed in 0.067 seconds
+Cook completed in 0.131 seconds
