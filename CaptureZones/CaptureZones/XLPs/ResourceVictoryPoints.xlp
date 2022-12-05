@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<AssetObjects..XLP>
+	<m_Version>
+		<major>2</major>
+		<minor>0</minor>
+		<build>0</build>
+		<revision>0</revision>
+	</m_Version>
+	<m_ClassName text="UITexture"/>
+	<m_PackageName text="UI/Icons"/>
+	<m_Entries>
+		<Element>
+			<m_EntryID text="ICON_SAM_VICTORY_POINTS_256"/>
+			<m_ObjectName text="ICON_SAM_VICTORY_POINTS_256"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_SAM_VICTORY_POINTS_38"/>
+			<m_ObjectName text="ICON_SAM_VICTORY_POINTS_38"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_SAM_VICTORY_POINTS_50"/>
+			<m_ObjectName text="ICON_SAM_VICTORY_POINTS_50"/>
+		</Element>
+		<Element>
+			<m_EntryID text="ICON_SAM_VICTORY_POINTS_64"/>
+			<m_ObjectName text="ICON_SAM_VICTORY_POINTS_64"/>
+		</Element>
+	</m_Entries>
+	<m_AllowedPlatforms>
+		<Element>WINDOWS</Element>
+		<Element>MACOS</Element>
+		<Element>IOS</Element>
+		<Element>LINUX</Element>
+		<Element>XBONE</Element>
+		<Element>PS4</Element>
+		<Element>SWITCH</Element>
+		<Element>STADIA</Element>
+	</m_AllowedPlatforms>
+</AssetObjects..XLP>
+
