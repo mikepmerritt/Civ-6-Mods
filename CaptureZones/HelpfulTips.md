@@ -70,3 +70,29 @@ Here are my notes on a couple functions that I ended up while working in Lua wit
 
 ### ResourceBuilder
 * ```ResourceBuilder.SetResourceType(plot, resourceID, otherParameter)``` - places a resource with id resourceID on Plot plot (if removing resource, set resourceID to -1 and exclude otherParameter; if placing, set otherParameter to 1 - not sure exactly how this works but it does)
+
+## Icons and Art Additions
+
+For the most part, we utilized [this guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2420858843) to get started, although the process was a bit different for us since we only added icons.
+
+When adding in resources, we had to create PNG images of the following sizes: 256x256 px, 64x64 px, 50x50 px, 38x38 px, and 22x22 px. The first four sizes will be used for showing the icons on the map, and the 22x22 px icon is used in text all across the user interface.
+
+Once you have the images ready, open your project in ModBuddy and add two folders, `XLPs` and `Artdefs` (optionally, put `Icons` to contain the SQL script to load the icons and atlases). Then, in ModBuddy, select  `Tools -> Launch Asset Editor...`. 
+
+Create a new Artdef from the template `UserInterfaceBLPs`. 
+
+Create an XLP file with the XLP class `UITexture` and Package Name `UI/Icons`. In the Entries window on the XLP, select `Add New` (the folder with the plus), change the `Exporting Class` to "User Interface", press `+ Add Source File...`, select your PNG files, then press `Apply To Selected` and `Import`.
+
+Go back to the Artdef file, and add the following code at the end of the AssetObjects..ArtDefSet tag:
+```xml
+	<m_BLPReferences>
+		<Element>
+			<xlpFile text="ResourceVictoryPoints.xlp"/>
+			<blpPackage text="CaptureZones.blp"/>
+			<xlpClass text="UITexture"/>
+		</Element>
+	</m_BLPReferences>
+```
+Note that the value for text in the xlpFile tag should be your XLP file name and the value for text in the blpPackage tag should be the name of the mod followed by ".blp". Without this, the game will not include the icons in the build.
+
+Finally, add an action to the mod properties to update the art using the Mod Art Dependency File, and write and add a script to create the IconAtlases and IconDefinitions using XML or SQL.
