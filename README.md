@@ -7,7 +7,7 @@ Developed for SER300, this repository contains multiple mods for *Sid Meier's Ci
 This project is intended to be opened on Windows 10/11, and all the setup instructions assume that you are on one of these operating systems.
 
 At the time of development, the following tools and versions were used:
-- *Sid Meier's Civilization VI* - Build ID 6640529
+- *Sid Meier's Civilization VI* - Build ID 6640529, later 9985721
 - *Sid Meier's Civilization VI Development Tools* - Build ID 4892607
 - *SQLite* - Portable Version 3.12.2
 
@@ -22,7 +22,7 @@ At the time of development, the following tools and versions were used:
 
 ## Setup (for further development)
 
-In order to begin working on the mods, you will need to first install *Sid Meier's Civilization VI Development Tools* on Steam. These should have come with the game for free. Installing *Sid Meier's Civilization VIDevelopment Assets* will not be necessary. For our purposes, we will be using ModBuddy for development and FireTuner for testing.
+In order to begin working on the mods, you will need to first install *Sid Meier's Civilization VI Development Tools* on Steam. These should have come with the game for free. Installing *Sid Meier's Civilization VI Development Assets* will not be necessary. For our purposes, we will be using ModBuddy for development and FireTuner for testing.
 
 This Git repository currently contains 4 distinct mods:
 - `Balance Changes` - a mod that primarily aims to adjust existing game elements, including civilizations, leaders, units, buildings, districts, great people, and more.
