@@ -4,12 +4,17 @@ Below is some documentation on the various functions and objects that I used. Re
 
 ## File Locations
 
-Here are some files and folders that I ended up using, and you might need too.
+Here are some files and folders that I ended up using often, and you might need too.
 
 * A copy of the game's databases is under ```.../Documents/My Games/Sid Meier's Civilization VI/Cache```. This is where you can see everything that was in the database from your last playthrough.
 * The database log is at ```.../Documents/My Games/Sid Meier's Civilization VI/Logs/Database.log```. This is where you can check for database-related errors.
 * The icons are under ```.../steamapps/common/Sid Meier's Civilization VI/Base/Assets/UI/Icons```. This is useful if you want to reuse one.
 * The FireTuner panels are under ```.../steamapps/common/Sid Meier's Civilization VI/Debug```. Open these from FireTuner for easier testing and debugging.
+* All of the code for the expansion packs and DLC packs are available at ```.../steamapps/common/Sid Meier's Civilization VI/DLC```, so if there is a feature added in one of the expansions or DLCs that you want to do something similar with, check there for how the developers did it. For example, when I was adding the combat strength bonus to the Show Superiority project, I started by looking at how the Mapuche's attack bonus versus civilizations in golden ages worked.
+
+## Adding Text
+
+If you want to add text to the game, you will need to add entries to the LocalizedText table. Make sure to do this in a separate XML or SQL file, as you will need to add it as a separate ```UpdateText``` entry to the list of In-Game Actions in ModBuddy. Additionally, make sure that all of your text entry tags start with ```LOC```, as the game uses this to recognize when to look for localized text entries.
 
 ## Event Listeners
 
@@ -22,6 +27,8 @@ To add a new resource type to the game, you should add new entries for your reso
 When using ```Plot:GetResourceType()```, the integer returned is a reference to the entry in the Resources table. You can figure out what this number means by opening the DebugGameplay.sqlite file in SQLite, going to the ```Resources``` table, and subtracting one from the numbers of the rows, assuming that you have not reordered it. For example, bananas is row 1 in SQLite, so ```Plot:GetResourceType()``` on a plot with bananas would return 0.
 
 ## Function Documentation
+
+Here are my notes on a couple functions that I ended up while working in Lua with the capture zone placement.
 
 ### Map
 * ```Map.GetPlot(x, y)``` - returns the Plot at x, y
