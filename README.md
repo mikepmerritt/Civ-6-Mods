@@ -11,7 +11,16 @@ At the time of development, the following tools and versions were used:
 - *Sid Meier's Civilization VI Development Tools* - Build ID 4892607
 - *SQLite* - Portable Version 3.12.2
 
-## Setup
+## Installation (for gameplay)
+1. Begin by downloading both `CaptureZones.zip` and `ComebackMechanics.zip` from the most recent release
+2. Navigate to your local Civilization VI game files, and select the `Mods` folder
+    - For the Steam installation of Civilization VI, the default location is in `Documents` in a folder called `Sid Meier's Civilization VI`
+    - As an example of where you need to go, my mods need to go into `C:\Users\scarf\OneDrive\Documents\My Games\Sid Meier's Civilization VI\Mods`
+3. Extract the contents of both `CaptureZones.zip` and `ComebackMechanics.zip` into the `Mods` folder
+    - If you do this correctly, the folder should now contain two folders named `CaptureZones` and `ComebackMechanics`
+4. Launch the game, and verify that the two mods are listed in game by going to `Additional Content -> Mods`
+
+## Setup (for further development)
 
 In order to begin working on the mods, you will need to first install *Sid Meier's Civilization VI Development Tools* on Steam. These should have come with the game for free. Installing *Sid Meier's Civilization VIDevelopment Assets* will not be necessary. For our purposes, we will be using ModBuddy for development and FireTuner for testing.
 
