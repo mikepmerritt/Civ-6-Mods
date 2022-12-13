@@ -1,14 +1,29 @@
 # ComebackMechanics
 
-## About
+## Overview
 
-Initially developed as a project for SER300, the ComebackMechanics mod seeks to give inexperienced or struggling players a chance to catch up and stay competitive in multiplayer games so that all players can have fun regardless of skill level. These comeback mechanics apply bonuses to sources of culture and science for players that are 2 techs or civics behind the average player in the game, and double if the player is an average of 4 techs or civics behind. To accomplish this, the ComebackMechanics mod adds:
+Initially developed as a project for SER300, the ComebackMechanics mod seeks to give inexperienced or struggling players a chance to catch up and stay competitive in multiplayer games so that all players can have fun regardless of skill level. These comeback mechanics apply bonuses to sources of culture and science for players that are 2 techs or civics behind the average player in the game, and double if the player is an average of 4 techs or civics behind. 
 
+## Features
+
+The ComebackMechanics mod adds:
 - A new science modifier which doubles the yields of all of a player's libraries, universities, and research labs when they are behind the average player by at least 2 techs
 - A new culture modifier which doubles the yields of all of a player's monuments, amphitheater, museums (art or archaeological), and broadcast centers when they are behind the average player by at least 2 civics
 - Additional bonuses which double these effects if the player is behind the average player by 4 techs/civics
 
-## Installation (for gameplay)
+## Tech Stack
+
+This project is intended to be opened on Windows 10/11, and all the setup instructions assume that you are on one of these operating systems.
+
+At the time of development, the following tools and versions were used:
+- *Sid Meier's Civilization VI* - Build ID 6640529, later 9985721
+- *Sid Meier's Civilization VI Development Tools* - Build ID 4892607
+- *SQLite* - Portable Version 3.12.2
+
+In terms of why we used these tools, we chose the tools that most modders suggested using, as it meant that there would be a lot of tutorials and resources to look at if we needed help with something during the modding process.
+
+## How to Use Project (User)
+
 1. Begin by downloading `ComebackMechanics.zip` from the most recent release
 2. Navigate to your local Civilization VI game files, and select the `Mods` folder
     - For the Steam installation of Civilization VI, the default location is in `Documents` in a folder called `Sid Meier's Civilization VI`
@@ -16,6 +31,10 @@ Initially developed as a project for SER300, the ComebackMechanics mod seeks to 
 3. Extract the contents of `ComebackMechanics.zip` into the `Mods` folder
     - If you do this correctly, the folder should now contain a folder named `ComebackMechanics`
 4. Launch the game, and verify that the mod is listed in game by going to `Additional Content -> Mods`
+
+## How to Setup and Run Project (Developer)
+
+See the instructions in the main README.
 
 ## File Breakdown
 

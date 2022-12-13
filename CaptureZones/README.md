@@ -1,16 +1,31 @@
 # CaptureZones
 
-## About
+## Overview
 
-Initially developed as a project for SER300, the CaptureZones mod seeks to add a new win condition to the game to encourage more aggression, diplomacy, and interaction in multiplayer games. The functionality was inspired by victory cards from *Europa Universalis 4*, in which the game would mark states that were owned by a potential rival as victory conditions to encourage more interesting diplomatic agreements and wars. To accomplish this, the CaptureZones mod adds:
+Initially developed as a project for SER300, the CaptureZones mod seeks to add a new win condition to the game to encourage more aggression, diplomacy, and interaction in multiplayer games. The functionality was inspired by victory cards from *Europa Universalis 4*, in which the game would mark states that were owned by a potential rival as victory conditions to encourage more interesting diplomatic agreements and wars. 
 
+## Features
+
+The CaptureZones mod adds:
 - A new strategic resource with high yields called Victory Points, which is placed in border cities at the start of the Classical, Renaissance, and Modern Eras
 - Two new projects using Victory Points which can be completed at the Government Plaza for increased unit Combat Strength and Diplomatic Favor generation
 - Three new tile improvements for gaining Victory Points as well as production, science, and culture
 - A new victory condition for completing both new projects
 - A great reason to culture bomb, loyalty flip, or declare war your friends
 
-## Installation (for gameplay)
+## Tech Stack
+
+This project is intended to be opened on Windows 10/11, and all the setup instructions assume that you are on one of these operating systems.
+
+At the time of development, the following tools and versions were used:
+- *Sid Meier's Civilization VI* - Build ID 6640529, later 9985721
+- *Sid Meier's Civilization VI Development Tools* - Build ID 4892607
+- *SQLite* - Portable Version 3.12.2
+
+In terms of why we used these tools, we chose the tools that most modders suggested using, as it meant that there would be a lot of tutorials and resources to look at if we needed help with something during the modding process.
+
+## How to Use Project (User)
+
 1. Begin by downloading `CaptureZones.zip` from the most recent release
 2. Navigate to your local Civilization VI game files, and select the `Mods` folder
     - For the Steam installation of Civilization VI, the default location is in `Documents` in a folder called `Sid Meier's Civilization VI`
@@ -18,6 +33,10 @@ Initially developed as a project for SER300, the CaptureZones mod seeks to add a
 3. Extract the contents of `CaptureZones.zip` into the `Mods` folder
     - If you do this correctly, the folder should now contain a folder named `CaptureZones`
 4. Launch the game, and verify that the mod is listed in game by going to `Additional Content -> Mods`
+
+## How to Setup and Run Project (Developer)
+
+See the instructions in the main README.
 
 ## File Breakdown
 

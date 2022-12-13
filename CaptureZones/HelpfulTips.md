@@ -2,6 +2,13 @@
 
 Below is some documentation on the various functions and objects that I used. Return types and arguments are described as well. I may not be entirely correct about everything here, but this simply documents my findings so they can be referenced later if necessary. If I missed anything, try looking through my code - I tried to comment what I was trying to do at each step anyways.
 
+## Using Other Mods
+
+If you ever want to do something that may have already been done in a mod but have no idea where to start, you can look at what the other modders did in their projects by finding their mod in the mods folder. Mods can actually end up being stored in multiple places:
+* If it is a mod that you built or one that you installed off of a website, GitHub repository, or forum post, it is likely in ```.../Documents/My Games/Sid Meier's Civilization VI/Mods```
+* If it is a mod that you downloaded from the Steam Workshop, it is likely in ```.../steamapps/workshop/content/289070``` (the number is the Steam App ID for Civilization VI)
+Since you only get to see the build of the mods by doing this, the file structure may differ and the solution file is not included, but you should still be able to see all of the mod's Lua, SQL, and XML files that add or change game content.
+
 ## File Locations
 
 Here are some files and folders that I ended up using often, and you might need too.
@@ -11,6 +18,7 @@ Here are some files and folders that I ended up using often, and you might need 
 * The icons are under ```.../steamapps/common/Sid Meier's Civilization VI/Base/Assets/UI/Icons```. This is useful if you want to reuse one.
 * The FireTuner panels are under ```.../steamapps/common/Sid Meier's Civilization VI/Debug```. Open these from FireTuner for easier testing and debugging.
 * All of the code for the expansion packs and DLC packs are available at ```.../steamapps/common/Sid Meier's Civilization VI/DLC```, so if there is a feature added in one of the expansions or DLCs that you want to do something similar with, check there for how the developers did it. For example, when I was adding the combat strength bonus to the Show Superiority project, I started by looking at how the Mapuche's attack bonus versus civilizations in golden ages worked.
+* As mentioned above, builds for mods can be found under ```.../Documents/My Games/Sid Meier's Civilization VI/Mods```, and mods you installed from the Steam Workshop can be found under ```.../steamapps/workshop/content/289070```.
 
 ## Adding Text
 
